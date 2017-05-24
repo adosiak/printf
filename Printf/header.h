@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 15:26:00 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/23 15:49:37 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/24 15:15:11 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,26 @@
 #include <stdlib.h>
 
 
-typedef struct s_param
+typedef struct	s_param
 {
-	int		parameter;
-	char	*flag;
-	int 	width;
-	int		precision;
-	int		length;
-	int		type;
-	char	*extra;
-}			t_param;
+	int			parameter;
+	char		*flag;
+	int 		width;
+	int			precision;
+	int			length;
+	int			type;
+	char		*extra;
+}				t_param;
 
-extern char g_lengths[8][3];
-extern char g_types[14][2];
+extern char		 g_lengths[8][3];
+extern char		 g_types[14][2];
 
+int				str_int_str(char *str, int what);
+char			*get_work_str(char *str);
+int				get_delta(t_param *a);
+t_param			*parse(char *str);
+void			get_length_type(char *str, int delta, t_param *a, int width_len);
+int				ft_strchr0(const char *str, int c);
+t_param			*create_node(void);
 
 #endif
