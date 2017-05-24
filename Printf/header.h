@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 15:26:00 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/16 17:37:26 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/23 15:49:37 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ typedef struct s_param
 	char	*flag;
 	int 	width;
 	int		precision;
-	char	*length;
-	char	*type;
+	int		length;
+	int		type;
+	char	*extra;
 }			t_param;
+
+extern char g_lengths[8][3];
+extern char g_types[14][2];
 
 
 #endif
