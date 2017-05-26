@@ -15,6 +15,7 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>//delete this
 
 
 typedef struct	s_param
@@ -38,5 +39,10 @@ t_param			*parse(char *str);
 void			get_length_type(char *str, int delta, t_param *a, int width_len);
 int				ft_strchr0(const char *str, int c);
 t_param			*create_node(void);
+void work_var(t_param *a, va_list ap);
+void type_s(t_param *a, va_list ap);
+void type_d(t_param *a, va_list ap);
+void type_p(t_param *a, va_list ap);
+
 
 #endif

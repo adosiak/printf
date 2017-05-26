@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "header.h"
 #include "libft.h"
 
@@ -40,14 +39,14 @@ t_param		*create_node(void)// maybe I don't need this?
 	new = (t_param *)malloc(sizeof(t_param));
 	new->parameter = 0;
 	new->flag = 0;
-	new->width = 0;
+	new->width = -1;
 	new->precision = -1;
 	new->length = -1;
 	new->type = -1;
 	new->extra = 0;
 	return (new);
 }
-	
+
 void	ft_printf(char *fmt, ...)
 {
 	va_list ap, ap2;
@@ -57,25 +56,27 @@ void	ft_printf(char *fmt, ...)
 	char *work_str;
 	t_param *a;
 	int	start;
-	int start_delta;
 
 	va_start(ap, fmt);
-	start = 0;
-	printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
+	//printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
 
-	start_delta = ft_strchr0(fmt, '%');//SHOULD DO: if start_delta !=0 then print from 0 to start_delta
-
-	while (fmt[start + start_delta])
+	start = ft_strchr0(fmt, '%');
+	ft_putstr(ft_strsub(fmt, 0, start));
+	while (fmt[start])
 	{
+	//	printf("\nA\n");
+	//	printf("HERE: %i\n", start);
 
 		work_str = get_work_str(&fmt[start]);
 		a = parse(work_str);
+		//printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+	  //printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra));
 
-		printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+		work_var(a, ap);
 		start = start + ft_strlen(work_str);
+		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);
 		i++;
 
-		printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra));
 	}
 
 	//	va_copy(ap2, ap);
@@ -93,10 +94,13 @@ void	ft_printf(char *fmt, ...)
 int		main(void)
 {
 	char a[20] = "HEllo";
-size_t b = 5;
+ 	int b = 5;
 
-	ft_printf("HEllo%1$#1.56zi,___%2$i,!!!HEllo%1$lli", b, 14);
-//	printf("%00i\n", 5);
+//	ft_printf("HEllo%1$#1.56zi,___%2$i,!!!HEllo%1$lli", b, 14);
+	//ft_printf("%00i\n", 5);
+//	printf("Example:%i\n", atoi("s"));
+printf("Real thing:%p\nX=%#x\n", &b, &b);
+	ft_printf("\nStart_delta!%s!%d\n!My pointer:%p\n", "Hello", 5, &b);
 //	ft_printf("!%10li\n", b);
 
 //	printf("%0o\n",b );
@@ -106,4 +110,3 @@ size_t b = 5;
 
 	return (0);
 }
-

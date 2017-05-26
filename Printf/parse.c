@@ -80,7 +80,7 @@ int			get_delta(t_param *a)
 		delta += ft_getsize(a->parameter, 10) + 1;
 	if (a->flag)
 		delta++;
-	if (a->width)
+	if (a->width > 0)
 		delta = delta + ft_getsize(a->width, 10);
 	if (a->precision >= 0)
 		delta = delta + ft_getsize(a->precision, 10) + 1;
@@ -131,4 +131,3 @@ char		*get_work_str(char *str)
 	res = ft_strsub(str, start, end + 1);
 	return (res);
 }
-
