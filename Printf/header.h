@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 15:26:00 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/24 15:15:11 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/26 16:18:17 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char			*get_work_str(char *str);
 int				get_delta(t_param *a);
 t_param			*parse(char *str);
 void			get_length_type(char *str, int delta, t_param *a, int width_len);
-int				ft_strchr0(const char *str, int c);
+int				ft_strchr0(const char *str, int pos, int c);
 t_param			*create_node(void);
-void work_var(t_param *a, va_list ap);
-void type_s(t_param *a, va_list ap);
+int work_var(t_param *a, va_list ap);
+int type_s(t_param *a, va_list ap);
 void type_d(t_param *a, va_list ap);
 void type_p(t_param *a, va_list ap);
 

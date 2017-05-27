@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 15:06:32 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/24 15:16:39 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/26 14:59:36 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,12 @@ t_param		*parse(char *str)
 	t_param *a;
 
 	a = create_node();
-	if (ft_strchr0(str, '$') > 0)
+	if (str[1] == '%')
+	{
+		a->extra = ft_strdup(&str[1]);
+		return (a);
+	}
+	if (ft_strchr0(str, 0, '$') > 0)
 		a->parameter = ft_atoi(&str[1]);
 	if (str[get_delta(a) + 1] == '#' || str[get_delta(a) + 1] == '0' ||
 			str[get_delta(a) + 1] == '+' || str[get_delta(a) + 1] == '-')
@@ -121,13 +126,28 @@ char		*get_work_str(char *str)
 	int start;
 	int end;
 	char *res;
+	int new_end;
 
-	start = ft_strchr0(str, '%');
+	start = ft_strchr0(str, 0, '%');
 	if (start < 0)
 		return (0);
-	end = ft_strchr0(&str[start + 1], '%');
+	end = ft_strchr0(str, start + 1, '%');
 	if (end < 0)
-		end = ft_strlen(str) - 1;
-	res = ft_strsub(str, start, end + 1);
+		end = ft_strlen(str);
+	//printf("\nstart=%i, end=%i\n", start, end);
+	//handling %%
+	if (end - start == 1)
+	{
+	//	printf("\nHERE\n");
+		new_end = end;
+		if (end != ft_strlen(str))
+			new_end = ft_strchr0(str,end + 1, '%');
+	//	printf("\n new_end=%i\n", new_end);
+		if (new_end < 0)
+			new_end = ft_strlen(str);
+		res = ft_strsub(str, start, new_end);
+	}
+	else
+		res = ft_strsub(str, start, end);
 	return (res);
 }
