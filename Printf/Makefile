@@ -6,19 +6,18 @@
 #    By: kwhitloc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/28 10:20:30 by kwhitloc          #+#    #+#              #
-#    Updated: 2017/03/22 16:31:56 by kwhitloc         ###   ########.fr        #
+#    Updated: 2017/05/26 17:28:27 by adosiak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME = printf
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
 
-SRCS = get_fillit.c fill_grid.c get_tmp.c make_array.c read_fillit.c
-
-OBJS = get_fillit.o fill_grid.o get_tmp.o make_array.o read_fillit.o
+SRCS = main.c parse.c work_var.c
+OBJS = main.o parse.o work_var.o
 
 LIB = ./libft
 LIBFT = make -C $(LIB)
