@@ -6,13 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 15:06:32 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 14:59:36 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/26 19:01:43 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "header.h"
-#include "libft.h"
 
 int			str_in_str(char *str, int what)
 {
@@ -111,7 +109,7 @@ t_param		*parse(char *str)
 		a->flag = ft_strsub(str, get_delta(a) + 1, 1);
 	a->width = ft_atoi(&str[get_delta(a) + 1]);
 
-	if (ft_strchr(str, '.') > 0)
+	if (ft_strchr0(str, 0, '.') > 0)
 		a->precision = ft_atoi(&str[get_delta(a) + 1 + 1]);// + 1 for '.'
 	get_length_type(str, get_delta(a), a, 1);
 	//DO I need this check?

@@ -6,12 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 13:38:57 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 16:50:07 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/26 19:04:33 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-#include "libft.h"
+#include "includes/header.h"
 
 char g_lengths[8][3] = {"hh","h","ll","l","j","z","L","t"};
 char g_types[14][2] = {"s","S","p","d","D","i","o","O","u","U","x","X","c","C"}	;
