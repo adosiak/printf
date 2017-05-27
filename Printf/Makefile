@@ -3,38 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kwhitloc <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: adosiak <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/02/28 10:20:30 by kwhitloc          #+#    #+#              #
-#    Updated: 2017/05/26 17:28:27 by adosiak          ###   ########.fr        #
+#    Created: 2017/03/01 12:08:58 by adosiak           #+#    #+#              #
+#    Updated: 2017/05/26 18:31:50 by adosiak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf
-
+NAME = libftprintf.a
 CC = gcc
-
-FLAGS = 
-
-SRCS = main.c parse.c work_var.c
-OBJS = main.o parse.o work_var.o
-
-LIB = ./libft
-LIBFT = make -C $(LIB)
-LIBDESTROY = make -C $(LIB) fclean
+FLAGS = -c -g
+INCLUDES = includes
+SRCS = ft_strlen.c ft_strnew.c ft_strncat.c ft_strrev.c ft_strcpy.c\
+	   ft_strcmp.c ft_strsub.c ft_strdup.c ft_atoi.c ft_strclr.c\
+	   ft_putchar.c ft_putstr.c  ft_itoa.c ft_itoa_base.c ft_getsize.c\
+	   ft_memset.c ft_memalloc.c\
+	   main.c parse.c work_var.c
+OBJS =  $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	$(LIBFT)
-	$(CC) $(FLAGS) $(SRCS) $(LIB)/libft.a -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) -I $(INCLUDES)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
-	$(LIBDESTROY)
-	rm -f $(OBJS)
+	/bin/rm -f $(OBJS)
 
 fclean: clean
-	$(LIBDESTROY)
-	rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

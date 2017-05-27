@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:26:24 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 16:42:11 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/05/26 18:12:33 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int		work_var(t_param *a, va_list ap)
 {
 	int res;
+	res = 0;
 	if (a->type == 0)
 		res = type_s(a, ap);
 	if (a->type == 2)
@@ -80,7 +81,7 @@ void type_d(t_param *a, va_list ap)
 {
 	int d;
 	d = va_arg(ap, int);
-	ft_putnbr(d);
+	ft_itoa(d);
 }
 void type_p(t_param *a, va_list ap)
 {
