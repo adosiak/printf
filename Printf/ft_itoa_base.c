@@ -6,11 +6,11 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 09:04:48 by exam              #+#    #+#             */
-/*   Updated: 2017/05/26 18:08:48 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/14 15:40:48 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 static void	put_hex(int value, char *str, int i)
 {

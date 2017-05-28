@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 12:29:39 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:25:33 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/14 12:41:12 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 void	ft_strrev(char *str)
 {

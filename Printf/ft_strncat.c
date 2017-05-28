@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 14:19:36 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:24:35 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/11 20:56:06 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 char	*ft_strncat(char *str, const char *add, size_t n)
 {

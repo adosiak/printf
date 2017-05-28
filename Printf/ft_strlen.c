@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:23:26 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:12:01 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/11 20:51:16 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 size_t		ft_strlen(const char *str)
 {

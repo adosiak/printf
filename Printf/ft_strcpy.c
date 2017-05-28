@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 12:42:30 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:25:13 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/11 20:53:33 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {

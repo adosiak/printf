@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 14:51:26 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:08:21 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/11 21:06:32 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 int		ft_atoi(const char *str)
 {

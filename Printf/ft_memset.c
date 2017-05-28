@@ -6,11 +6,11 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 15:52:05 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/26 18:29:49 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/03/11 20:46:01 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

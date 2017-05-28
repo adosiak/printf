@@ -13,10 +13,8 @@
 #define HEADER_H
 # ifdef HEADER_H
 
-# include <unistd.h>
 # include <stdarg.h>
-# include <stdlib.h>
-# include <stdio.h>//delete this
+# include <stdio.h>//delete thisx
 
 
 typedef struct	s_param
@@ -33,24 +31,6 @@ typedef struct	s_param
 extern char		 g_lengths[8][3];
 extern char		 g_types[14][2];
 
-size_t				ft_strlen(char const *str);
-char				*ft_strdup(const char *str);
-char				*ft_strcpy(char *dest, const char *src);
-char				*ft_strncat(char *str, const char *add, size_t n);
-
-char				*ft_strnew(size_t size);
-void				*ft_memalloc(size_t size);
-void				*ft_memset(void *s, int c, size_t n);
-void				ft_strclr(char *s);
-void				ft_strrev(char *str);
-int					ft_strcmp(const char *dest, const char *src);
-int					ft_atoi(const char *str);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
-char				*ft_itoa(int n);//?
-void				ft_putchar(char c);
-void				ft_putstr(char const *s);
-char				*ft_itoa_base(int value, int base);
-int					ft_getsize(int value, int base);
 
 
 int				str_int_str(char *str, int what);
@@ -64,6 +44,9 @@ int work_var(t_param *a, va_list ap);
 int type_s(t_param *a, va_list ap);
 void type_d(t_param *a, va_list ap);
 void type_p(t_param *a, va_list ap);
+int		ft_strchr0(const char *str, int pos, int c);
+t_param		*create_node(void);// maybe I don't need this?
+int		ft_printf(char *fmt, ...);
 
 
 #endif

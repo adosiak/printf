@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "header.h"
 
 int		work_var(t_param *a, va_list ap)
@@ -18,10 +19,10 @@ int		work_var(t_param *a, va_list ap)
 	res = 0;
 	if (a->type == 0)
 		res = type_s(a, ap);
-	if (a->type == 2)
+	/*if (a->type == 2)
 		type_p(a, ap);
 	if (a->type == 3)
-		type_d(a, ap);
+		type_d(a, ap);*/
 	ft_putstr(a->extra);
 	return (res + ft_strlen(a->extra));
 }
@@ -76,7 +77,7 @@ int		type_s(t_param *a, va_list ap)
 	return (res);
 }
 
-void type_d(t_param *a, va_list ap)
+/*void type_d(t_param *a, va_list ap)
 {
 	int d;
 	d = va_arg(ap, int);
@@ -91,4 +92,4 @@ void type_p(t_param *a, va_list ap)
 	//  printf("###\n");
 	//printf("\nCorrect:%p\n", &p);
 
-}
+}*/

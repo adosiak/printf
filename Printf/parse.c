@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "header.h"
 
 int			str_in_str(char *str, int what)
@@ -92,8 +93,8 @@ int			get_delta(t_param *a)
 
 t_param		*parse(char *str)
 {
-	int start;
-	int end;
+
+
 	t_param *a;
 
 	a = create_node();
@@ -138,7 +139,7 @@ char		*get_work_str(char *str)
 	{
 	//	printf("\nHERE\n");
 		new_end = end;
-		if (end != ft_strlen(str))
+		if (end != (int)ft_strlen(str))
 			new_end = ft_strchr0(str,end + 1, '%');
 	//	printf("\n new_end=%i\n", new_end);
 		if (new_end < 0)
