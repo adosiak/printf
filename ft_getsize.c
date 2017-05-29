@@ -17,6 +17,8 @@ int		ft_getsize(int value, int base)
 	int i;
 
 	i = 0;
+	if (value < 0)
+		value = value * (-1);
 	while (value >= base)
 	{
 		i++;

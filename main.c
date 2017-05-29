@@ -17,12 +17,15 @@
 int		main(void)
 {
 	char a[20] = "HEllo";
- 	int b = 5;
+ 	int b = -5000;
 	int *a1 = &b;
 
-	printf("1.res=%i\n", ft_printf("I'm printing this:%-13.5s\n", a));
-	
-	printf("2.res=%i\n", printf("I'm printing this:%-13.5s\n", a));
+	/*printf("1.res=%i\n", ft_printf("I'm printing this:%-13.5s\n", a));
+	printf("2.res=%i\n", printf("I'm printing this:%-13.5s\n", a));*/
+
+	printf("MY:%i\n", ft_printf("%%d:%-8d\n", b));
+	printf("cr:%i\n", printf("%%d:%-8d\n", b));
+
 /*	ft_printf("Correct:%%%ls\n", &b);
 	printf("Correct:%%%ls\n", a);*/
 

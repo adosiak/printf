@@ -105,10 +105,18 @@ t_param		*parse(char *str)
 	}
 	if (ft_strchr0(str, 0, '$') > 0)
 		a->parameter = ft_atoi(&str[1]);
+//	printf("\nstr:%s\n",str);
+
+	//printf("\n1.Print get_delta:%i\n",get_delta(a));
+
 	if (str[get_delta(a) + 1] == '#' || str[get_delta(a) + 1] == '0' ||
 			str[get_delta(a) + 1] == '+' || str[get_delta(a) + 1] == '-')
 		a->flag = ft_strsub(str, get_delta(a) + 1, 1);
+//	printf("2.Print get_delta:%i\n",get_delta(a));
+
 	a->width = ft_atoi(&str[get_delta(a) + 1]);
+	/*printf("3.Print get_delta:%i\n",get_delta(a));
+	printf("\nAAA:%s", &str[get_delta(a) + 1]);*/
 
 	if (ft_strchr0(str, 0, '.') > 0)
 		a->precision = ft_atoi(&str[get_delta(a) + 1 + 1]);// + 1 for '.'
@@ -128,6 +136,7 @@ char		*get_work_str(char *str)
 	int new_end;
 
 	start = ft_strchr0(str, 0, '%');
+
 	if (start < 0)
 		return (0);
 	end = ft_strchr0(str, start + 1, '%');

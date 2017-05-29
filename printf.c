@@ -55,14 +55,14 @@ int		ft_printf(char *fmt, ...)
 	while (fmt[start])
 	{
 		//	printf("\nA\n");
-		//	printf("HERE: %i\n", start);
+			//printf("start in printf: %i\n", start);
 
 		work_str = get_work_str(&fmt[start]);
 		len_work_str = ft_strlen(work_str);
 
 		a = parse(work_str);
-		//	printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
-		//	printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra));
+			//printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+			//printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra));
 
 		res += work_var(a, ap);
 		start = start + len_work_str;//+ ft_strlen(work_str);
@@ -70,6 +70,7 @@ int		ft_printf(char *fmt, ...)
 		i++;
 
 	}
+	//printf("RES in printf:%i\n", res);
 	return (res);
 
 	//	va_copy(ap2, ap);

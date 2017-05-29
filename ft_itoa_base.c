@@ -20,9 +20,9 @@ static void	put_hex(int value, char *str, int i)
 		str[i] = 'A' + (value - 10);
 }
 
-static void	neg_strend(char *str, int i, int flag)
+static void	neg_strend(char *str, int i, int flag, int base)
 {
-	if (flag)
+	if (base == 10 && flag)
 	{
 		str[i] = '-';
 		i++;
@@ -41,7 +41,7 @@ char		*ft_itoa_base(int value, int base)
 	flag = 0;
 	if (value == -2147483648)
 		return ("-2147483648");
-	if (base == 10 && value < 0)
+	if (value < 0)
 	{
 		value = value * (-1);
 		flag = 1;
@@ -54,7 +54,7 @@ char		*ft_itoa_base(int value, int base)
 	}
 	put_hex(value, str, i);
 	i++;
-	neg_strend(str, i, flag);
+	neg_strend(str, i, flag, base);
 	ft_strrev(str);
 	return (str);
 }
