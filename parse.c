@@ -79,7 +79,7 @@ int			get_delta(t_param *a)
 		delta += ft_getsize(a->parameter, 10) + 1;
 	if (a->flag)
 		delta++;
-	if (a->width > 0)
+	if (a->width >= 0)
 		delta = delta + ft_getsize(a->width, 10);
 	if (a->precision >= 0)
 		delta = delta + ft_getsize(a->precision, 10) + 1;
@@ -93,8 +93,6 @@ int			get_delta(t_param *a)
 
 t_param		*parse(char *str)
 {
-
-
 	t_param *a;
 
 	a = create_node();
@@ -115,6 +113,9 @@ t_param		*parse(char *str)
 //	printf("2.Print get_delta:%i\n",get_delta(a));
 
 	a->width = ft_atoi(&str[get_delta(a) + 1]);
+	//printf("!!!!!!!Here: %s", &str[get_delta(a) + 1]);
+	if (a->width == 0 && str[get_delta(a)] != '0')
+		a->width = -1;
 	/*printf("3.Print get_delta:%i\n",get_delta(a));
 	printf("\nAAA:%s", &str[get_delta(a) + 1]);*/
 

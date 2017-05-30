@@ -31,8 +31,6 @@ typedef struct	s_param
 extern char		 g_lengths[8][3];
 extern char		 g_types[14][2];
 
-
-
 int				str_int_str(char *str, int what);
 char			*get_work_str(char *str);
 int				get_delta(t_param *a);
@@ -43,10 +41,13 @@ t_param			*create_node(void);
 int work_var(t_param *a, va_list ap);
 int type_s(t_param *a, va_list ap);
 int type_d(t_param *a, va_list ap);
+int type_c(t_param *a, va_list ap);
+int type_u(t_param *a, va_list ap);
+
 void type_p(t_param *a, va_list ap);
 int		ft_strchr0(const char *str, int pos, int c);
+void	put_chr_n(char c, int n);
 t_param		*create_node(void);// maybe I don't need this?
 int		ft_printf(char *fmt, ...);
-
 
 #endif
