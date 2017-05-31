@@ -23,9 +23,9 @@ int		work_var(t_param *a, va_list ap)
 	//if (a->type == 2)
 //		res = type_p(a, ap);
 	if (a->type == 3 || a->type == 5)
-		res = type_d(a, ap);
-	if (a->type == 8 || a->type == 6 || a->type == 10)
-		res = type_u(a, ap);
+		res = type_di(a, ap);
+	if (a->type == 8 || a->type == 6 || a->type == 10 || a->type == 11)
+		res = type_uox(a, ap);
 	if (a->type == 12)
 		res = type_c(a, ap);
 	ft_putstr(a->extra);

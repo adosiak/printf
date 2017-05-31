@@ -27,7 +27,8 @@ SRCS = ft_strmap.c ft_strlen.c ft_strmapi.c ft_strequ.c ft_strnequ.c \
 		 ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 		 ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strrev.c \
 		 ft_itoa_base.c ft_power.c ft_getsize.c ft_max.c ft_get_next_line.c \
-		 parse.c work_var.c printf.c type_sc.c type_d.c type_u.c
+		 parse.c work_var.c printf.c type_sc.c type_d.c type_u.c length.c \
+		 unsign_itoa_base.c
 
 OBJS =  $(SRCS:.c=.o)
 

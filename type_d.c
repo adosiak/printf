@@ -13,13 +13,14 @@
 #include "libft.h"
 #include "header.h"
 
-void type_d_help(t_param *a, int d, int *spaces, int *zeros)
+void type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 {
 	char *print_res;
 	int neg;
 
 	neg = 0;
 	print_res = ft_itoa_base(d, 10);
+	//printf("HEREEE:d=%lld\ns=%s\n", d, print_res);
 	if(d == 0 && a->precision == 0)
 		print_res = 0;
 	if (a->width > 0 && a->width >= ft_strlen(print_res))
@@ -44,18 +45,20 @@ void type_d_help(t_param *a, int d, int *spaces, int *zeros)
 	ft_putstr(&print_res[neg]);
 }
 
-int type_d(t_param *a, va_list ap)
+int type_di(t_param *a, va_list ap)
 {
 	int res;
-	int d;
+	long long d;
 	int spaces;
 	int zeros;
 
 	spaces = 0;
 	zeros = 0;
 	res = 0;
-	d = va_arg(ap, int);
-	type_d_help(a, d, &spaces, &zeros);
+	d = get_di(a, ap);
+	//printf("in type_d:%jd\n", d);
+
+	type_di_help(a, d, &spaces, &zeros);
 
 	if (a->flag && ft_strcmp(a->flag, "-") == 0)
 		put_chr_n(' ', spaces - zeros);

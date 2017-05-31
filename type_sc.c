@@ -23,6 +23,7 @@ int		type_s(t_param *a, va_list ap)
 
 	//i = -1;
 	str = va_arg(ap, char *);
+
 	spaces = 0;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
 	// if (a->flag == "+, #, 0") undefined behavior
@@ -58,6 +59,7 @@ int type_c(t_param *a, va_list ap)
 	int spaces;
 
 	c = va_arg(ap, int);
+
   res = 1;
 	spaces = 0;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated

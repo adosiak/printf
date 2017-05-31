@@ -95,9 +95,9 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_strrev(char *str);
-char				*ft_itoa_base(int value, int base);
+char				*ft_itoa_base(long long value, int base);
 int					ft_power(int nb, int power);
-int					ft_getsize(int value, int base);
+int					ft_getsize(long long value, int base);
 int					ft_max(int a, int b);
 
 int					ft_get_next_line(const int fd, char **line);

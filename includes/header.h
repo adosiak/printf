@@ -40,14 +40,20 @@ int				ft_strchr0(const char *str, int pos, int c);
 t_param			*create_node(void);
 int work_var(t_param *a, va_list ap);
 int type_s(t_param *a, va_list ap);
-int type_d(t_param *a, va_list ap);
+int type_di(t_param *a, va_list ap);
 int type_c(t_param *a, va_list ap);
-int type_u(t_param *a, va_list ap);
+int type_uox(t_param *a, va_list ap);
 
 void type_p(t_param *a, va_list ap);
 int		ft_strchr0(const char *str, int pos, int c);
 void	put_chr_n(char c, int n);
 t_param		*create_node(void);// maybe I don't need this?
 int		ft_printf(char *fmt, ...);
+char		*unsign_itoa_base(unsigned long long int value, int base);
+unsigned long long get_uox(t_param *a, va_list ap);
+long long get_di(t_param *a, va_list ap);
+
+
+
 
 #endif

@@ -17,7 +17,7 @@
 int		main(void)
 {
 	char a[20] = "HEllo";
- 	unsigned short b = 1230;
+ 	int b = 255;
 	//int *a1 = &b;
 //----%s----
 	/*printf("1.res=%i\n", ft_printf("I'm printing this:%-13.5s\n", a));
@@ -26,14 +26,17 @@ int		main(void)
 	//printf("MY:%i\n", ft_printf("%%d:%08.12d\n", b));
 	//printf("cr:%i\n", printf("%%d:%08.12d\n", b));
 // ---%u------
-	/*printf("MY:%i\n", ft_printf("%%u:%-.0u\n", b));
-	printf("cr:%i\n", printf("%%u:%-.0u\n", b));*/
+	//printf("MY:%i\n", ft_printf("%%u:%-.0u\n", b));
+	//printf("cr:%i\n", printf("%%u:%-.0u\n", b));
 	 //---%o------
 		/*printf("MY:%i\n", ft_printf("%%o:%.0o\n", b));
 		printf("cr:%i\n", printf("%%o:%.0o\n", b));*/
+
+
+
 		//---%x------
- 		printf("MY:%i\n", ft_printf("%%x:%-12.8x\n", b));
- 		printf("cr:%i\n", printf("%%x:%-12.8x\n", b));
+ 		printf("MY:%i\n", ft_printf("%%x:%#11x\n", b));
+ 		printf("cr:%i\n", printf("%%x:%#11x\n", b));
 
 
 	//---%c----

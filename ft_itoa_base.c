@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void	put_hex(int value, char *str, int i)
+static void	put_hex(long long value, char *str, int i)
 {
 	if (value < 10)
 		str[i] = value + '0';
@@ -30,7 +30,7 @@ static void	neg_strend(char *str, int i, int flag, int base)
 	str[i] = '\0';
 }
 
-char		*ft_itoa_base(int value, int base)
+char		*ft_itoa_base(long long value, int base)
 {
 	char	*str;
 	int		i;
@@ -39,14 +39,14 @@ char		*ft_itoa_base(int value, int base)
 	str = (char *)malloc(sizeof(char) * ft_getsize(value, base) + 1);
 	i = 0;
 	flag = 0;
-	if (value == -2147483648)
-		return ("-2147483648");
+	//if (value == -2147483648)
+		//return ("-2147483648");
 	if (value < 0)
 	{
 		value = value * (-1);
 		flag = 1;
 	}
-	while (value >= base)
+	while (value >= (long long)base)
 	{
 		put_hex(value % base, str, i);
 		i++;
