@@ -17,8 +17,9 @@
 int		main(void)
 {
 	char a[20] = "HEllo";
- 	int b = 255;
-	//int *a1 = &b;
+ 	int b = 234;
+	int *a1 = &b;
+	float f = 10.0202;
 //----%s----
 	/*printf("1.res=%i\n", ft_printf("I'm printing this:%-13.5s\n", a));
 	printf("2.res=%i\n", printf("I'm printing this:%-13.5s\n", a));*/
@@ -35,9 +36,16 @@ int		main(void)
 
 
 		//---%x------
- 		printf("MY:%i\n", ft_printf("%%x:%#11x\n", b));
- 		printf("cr:%i\n", printf("%%x:%#11x\n", b));
+ 	/*	printf("MY:%i\n", ft_printf("%%x:%#11x\n", b));
+ 		printf("cr:%i\n", printf("%%x:%#11x\n", b));*/
 
+		//---%p------
+	/*printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
+	printf("cr:%i\n", printf("%%p:%1p\n", a1));*/
+
+	//---%f------
+//printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
+printf("cr:%i\n", printf("%%f:%-20.p\n", a1));
 
 	//---%c----
 	/*printf("MY:%i\n", ft_printf("%%c:%-c\n", a[0]));

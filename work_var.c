@@ -20,8 +20,8 @@ int		work_var(t_param *a, va_list ap)
 	res = 0;
 	if (a->type == 0)
 		res = type_s(a, ap);
-	//if (a->type == 2)
-//		res = type_p(a, ap);
+	if (a->type == 2)
+		res = type_p(a, ap);
 	if (a->type == 3 || a->type == 5)
 		res = type_di(a, ap);
 	if (a->type == 8 || a->type == 6 || a->type == 10 || a->type == 11)
@@ -43,14 +43,3 @@ void	put_chr_n(char c, int n)
 		i++;
 	}
 }
-
-/*void type_p(t_param *a, va_list ap)
-{
-	size_t p;
-	p = va_arg(ap, size_t);
-	//work on ft_itoa_base(change int to unsingned long long?);
-	ft_putstr(ft_itoa_base(p, 16));
-	//  printf("###\n");
-	//printf("\nCorrect:%p\n", &p);
-
-}*/

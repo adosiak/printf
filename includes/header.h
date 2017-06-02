@@ -44,7 +44,7 @@ int type_di(t_param *a, va_list ap);
 int type_c(t_param *a, va_list ap);
 int type_uox(t_param *a, va_list ap);
 
-void type_p(t_param *a, va_list ap);
+int type_p(t_param *a, va_list ap);
 int		ft_strchr0(const char *str, int pos, int c);
 void	put_chr_n(char c, int n);
 t_param		*create_node(void);// maybe I don't need this?
