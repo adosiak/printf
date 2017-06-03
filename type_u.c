@@ -85,7 +85,6 @@ int type_uox(t_param *a, va_list ap)
 	int zeros;
   char *print_res;
 
-
 	spaces = 0;
 	zeros = 0;
 	res = 0;
@@ -96,8 +95,10 @@ int type_uox(t_param *a, va_list ap)
 		put_chr_n(' ', spaces - zeros);
   if (a->flag && (a->type == 10 || a->type == 11) && !ft_strcmp(a->flag, "#"))
       res+=2;
+//  printf("1.res in type_uox:%d", res);
 	res += ft_strlen(print_res) + ft_max(spaces, zeros);
-	if(d == 0 && a->precision == 0)
+  //printf("\n2.res in type_uox:%d\n", res);
+	if(d == 0 && a->precision == 0 && res > 0)
 		res--;
 	return (res);
 }

@@ -23,25 +23,35 @@ int		type_s(t_param *a, va_list ap)
 
 	//i = -1;
 	str = va_arg(ap, char *);
-
 	spaces = 0;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
 	// if (a->flag == "+, #, 0") undefined behavior
-	if (a->precision != -1)
+
+	if (!str)
+		str = "(null)";
+	/*if (a->precision != -1)
 		spaces = a->width - a->precision;
-	else
+	else*/
 		spaces = a->width - ft_strlen(str);
 
 	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
 		put_chr_n(' ', spaces);
 	res = ft_strlen(str);
 
+
+
+
 	if (a->precision == -1)
 		ft_putstr(str);
 	else
 	{
+	//		printf("\n!!!rpres=%d", a->precision);
 		tmp = ft_strsub(str, 0, a->precision);
-		res = a->precision;
+		if(str)
+		{
+			res = a->precision;
+			printf("hetr");
+		}
 		ft_putstr(tmp);
 		free(tmp);
 	}
@@ -49,6 +59,7 @@ int		type_s(t_param *a, va_list ap)
 		put_chr_n(' ', spaces);
 	if (spaces > 0)
 		res = res + spaces;
+	//printf("\n!!!res=%d", res);
 	return (res);
 }
 
@@ -75,5 +86,34 @@ int type_c(t_param *a, va_list ap)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
   return(res);
+}
 
+int no_type(t_param *a)
+{
+  int res;
+	int spaces;
+  res = 0;
+	spaces = 0;
+	int new_start;
+	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
+	// if (a->flag == "+, #, 0") undefined behavior
+	spaces = a->width - 1;
+	new_start = ft_strchr0(a->extra, 0, '%');
+//	printf("new_start=%d, old extra=%s", new_start, a->extra);
+	if (new_start > 0)
+		ft_memmove(&a->extra[0], &a->extra[new_start], ft_strlen(a->extra) - new_start + 1);
+
+	//printf("\nnew extra=%s\n", a->extra);
+
+	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
+		put_chr_n(' ', spaces);
+	ft_putchar(a->extra[0]);
+	if (a->flag && ft_strcmp(a->flag, "-") == 0)
+		put_chr_n(' ', spaces);
+
+	if (a->extra[1])
+		ft_putstr(&(a->extra[1]));
+	if (spaces > 0)
+		res = spaces;
+  return(res);
 }

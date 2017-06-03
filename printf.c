@@ -33,6 +33,7 @@ t_param		*create_node(void)// maybe I don't need this?
 	new->length = -1;
 	new->type = -1;
 	new->extra = 0;
+	new->spaces = 0;
 	return (new);
 }
 
@@ -50,21 +51,27 @@ int		ft_printf(char *fmt, ...)
 	//printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
 
 	start = ft_strchr0(fmt, 0, '%');
+	if (start == -1)
+	{
+		ft_putstr(fmt);
+		return (ft_strlen(fmt));
+	}
 	ft_putstr(ft_strsub(fmt, 0, start));
 	res = start;
 	while (fmt[start])
 	{
-		//	printf("\nA\n");
-			//printf("start in printf: %i\n", start);
+			//printf("\nA\n");
+		//	printf("start in printf: %i\n", start);
 
 		work_str = get_work_str(&fmt[start]);
 		len_work_str = ft_strlen(work_str);
 
 		a = parse(work_str);
-			//printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
-			//printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra));
-
+		//printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+		//printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
+   //printf("\n1.res in printf:%d\n", res);
 		res += work_var(a, ap);
+		//printf("\n2.res in printf:%d\n", res);
 		start = start + len_work_str;//+ ft_strlen(work_str);
 		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);
 		i++;

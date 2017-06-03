@@ -70,9 +70,11 @@ void		get_length_type(char *str, int delta, t_param *a, int width_len)
 	}
 }
 
-int			get_delta(t_param *a)
+int			get_delta(t_param *a, int *flag, char *str)
 {
 	int delta;
+	int i;
+
 
 	delta = 0;
 	if (a->parameter)
@@ -87,45 +89,64 @@ int			get_delta(t_param *a)
 		delta +=ft_strlen(g_lengths[a->length]);
 	if (a->type >= 0)
 		delta++;
-
-	return (delta);
+	i = delta + a->spaces + 1;
+	while (a->type == -1 && str[i])
+	{
+		if (str[i] == ' ')
+		{
+			a->spaces++;
+			*flag = 1;
+		}
+		else
+			break ;
+		i++;
+	}
+	return (delta + a->spaces);
 }
 
 t_param		*parse(char *str)
 {
 	t_param *a;
+	int flag;
 
 	a = create_node();
-	if (str[1] == '%')
+	flag = 0;
+/*	if (str[1] == '%')
 	{
 		a->extra = ft_strdup(&str[1]);
 		return (a);
 	}
+	*/
+
 	if (ft_strchr0(str, 0, '$') > 0)
 		a->parameter = ft_atoi(&str[1]);
 //	printf("\nstr:%s\n",str);
 
-	//printf("\n1.Print get_delta:%i\n",get_delta(a));
+	//printf("\n1.Print get_delta:%i\n",get_delta(a, &flag, str));
 
-	if (str[get_delta(a) + 1] == '#' || str[get_delta(a) + 1] == '0' ||
-			str[get_delta(a) + 1] == '+' || str[get_delta(a) + 1] == '-')
-		a->flag = ft_strsub(str, get_delta(a) + 1, 1);
-//	printf("2.Print get_delta:%i\n",get_delta(a));
+	if (str[get_delta(a, &flag, str) + 1] == '#' || str[get_delta(a, &flag, str) + 1] == '0' ||
+			str[get_delta(a, &flag, str) + 1] == '+' || str[get_delta(a, &flag, str) + 1] == '-')
+		a->flag = ft_strsub(str, get_delta(a, &flag, str) + 1, 1);
+//	printf("2.Print get_delta:%i\n",get_delta(a, &flag, str));
 
-	a->width = ft_atoi(&str[get_delta(a) + 1]);
-	//printf("!!!!!!!Here: %s", &str[get_delta(a) + 1]);
-	if (a->width == 0 && str[get_delta(a)] != '0')
+	a->width = ft_atoi(&str[get_delta(a, &flag, str) + 1]);
+	//printf("!!!!!!!Here: %s", &str[get_delta(a, &flag, str) + 1]);
+	if (a->width == 0 && str[get_delta(a, &flag, str) - a->spaces] != '0')
+	{
 		a->width = -1;
-	/*printf("3.Print get_delta:%i\n",get_delta(a));
-	printf("\nAAA:%s", &str[get_delta(a) + 1]);*/
+		a->spaces = 0;
+		flag = 0;
+	}
+	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str));
+	printf("\nAAA:%s", &str[get_delta(a, &flag, str) + 1]);*/
 
 	if (ft_strchr0(str, 0, '.') > 0)
-		a->precision = ft_atoi(&str[get_delta(a) + 1 + 1]);// + 1 for '.'
-	get_length_type(str, get_delta(a), a, 1);
+		a->precision = ft_atoi(&str[get_delta(a, &flag, str) + 1 + 1]);// + 1 for '.'
+	get_length_type(str, get_delta(a, &flag, str), a, 1);
 	//DO I need this check?
 /*	if (a->type >= 0)
 		delta++;*/
-	a->extra = ft_strdup(&str[get_delta(a) + 1]);
+	a->extra = ft_strdup(&str[get_delta(a, &flag, str) + 1]);
 	return (a);
 }
 
@@ -135,6 +156,7 @@ char		*get_work_str(char *str)
 	int end;
 	char *res;
 	int new_end;
+	t_param *a;
 
 	start = ft_strchr0(str, 0, '%');
 
@@ -143,9 +165,16 @@ char		*get_work_str(char *str)
 	end = ft_strchr0(str, start + 1, '%');
 	if (end < 0)
 		end = ft_strlen(str);
+
+	res = ft_strsub(str, start, end);
+	//printf("\nres in get_work_str=%s", res);
+	a = parse(res);
+	if (end != ft_strlen(str) && a->type == -1)
+		res = ft_strjoin(ft_strsub(str, 0, end), get_work_str(&str[end]));
+	return (res);
 	//printf("\nstart=%i, end=%i\n", start, end);
 	//handling %%
-	if (end - start == 1)
+	/*if (end - start == 1)
 	{
 	//	printf("\nHERE\n");
 		new_end = end;
@@ -158,5 +187,6 @@ char		*get_work_str(char *str)
 	}
 	else
 		res = ft_strsub(str, start, end);
-	return (res);
+	parse(res);
+	return (res);*/
 }

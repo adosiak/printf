@@ -16,19 +16,24 @@
 
 int		main(void)
 {
-	char a[20] = "HEllo";
- 	int b = 234;
+	char a[20] = "";
+ 	int b = 10;
 	int *a1 = &b;
 	float f = 10.0202;
+	char *aa = NULL;
 //----%s----
-	/*printf("1.res=%i\n", ft_printf("I'm printing this:%-13.5s\n", a));
-	printf("2.res=%i\n", printf("I'm printing this:%-13.5s\n", a));*/
+//	printf("1.res=%i\n", ft_printf("   %-5%"));
+	//printf("\n---\n");
+	//printf("\n2.res=%i\n", printf("%#08x", 42));
 //---%d-----
-	//printf("MY:%i\n", ft_printf("%%d:%08.12d\n", b));
-	//printf("cr:%i\n", printf("%%d:%08.12d\n", b));
+/*	printf("MY:%i\n", ft_printf("% 0    d", b));
+	printf("cr:%i\n", printf("% 0 d", b));*/
+
+	printf("MY:%i\n", ft_printf("%-3.6sHey", a));
+	printf("cr:%i\n", printf("%-3.6sHey", a));
 // ---%u------
-	//printf("MY:%i\n", ft_printf("%%u:%-.0u\n", b));
-	//printf("cr:%i\n", printf("%%u:%-.0u\n", b));
+	//printf("MY:%i\n", ft_printf("%%u:%-0u\n", b));
+//	printf("cr:%i\n", printf("%%u:%-0u\n", b));
 	 //---%o------
 		/*printf("MY:%i\n", ft_printf("%%o:%.0o\n", b));
 		printf("cr:%i\n", printf("%%o:%.0o\n", b));*/
@@ -36,8 +41,8 @@ int		main(void)
 
 
 		//---%x------
- 	/*	printf("MY:%i\n", ft_printf("%%x:%#11x\n", b));
- 		printf("cr:%i\n", printf("%%x:%#11x\n", b));*/
+// 		printf("MY:%i\n", ft_printf("%%x:%0#8x\n", 42));
+ //		printf("cr:%i\n", printf("%%x:%0#8x\n", 42));
 
 		//---%p------
 	/*printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
@@ -45,7 +50,7 @@ int		main(void)
 
 	//---%f------
 //printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
-printf("cr:%i\n", printf("%%f:%-20.p\n", a1));
+//printf("cr:%i\n", printf("%%f:%-20.p\n", a1));
 
 	//---%c----
 	/*printf("MY:%i\n", ft_printf("%%c:%-c\n", a[0]));
