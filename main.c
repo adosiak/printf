@@ -12,6 +12,7 @@
 
 #include "includes/libft.h"
 #include "includes/header.h"
+#include <limits.h>
 
 
 int		main(void)
@@ -28,9 +29,13 @@ int		main(void)
 //---%d-----
 /*	printf("MY:%i\n", ft_printf("% 0    d", b));
 	printf("cr:%i\n", printf("% 0 d", b));*/
+//	ft_printf("%5.2s is a string", "");
+printf("my:%d\n",ft_printf("\n%U", ULONG_MAX));
+printf("cr:%d\n", printf("\n%U", ULONG_MAX));
 
-	printf("MY:%i\n", ft_printf("%-3.6sHey", a));
-	printf("cr:%i\n", printf("%-3.6sHey", a));
+printf("%d %d %d\n", sizeof(int), sizeof(long), sizeof(long long));
+	//printf("\nMY:%i\n", ft_printf("%5.2s is a string", ""));
+	//printf("\ncr:%i\n", printf("%5.2s is a string", ""));
 // ---%u------
 	//printf("MY:%i\n", ft_printf("%%u:%-0u\n", b));
 //	printf("cr:%i\n", printf("%%u:%-0u\n", b));

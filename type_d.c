@@ -23,6 +23,8 @@ void type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 	//printf("HEREEE:d=%lld\ns=%s\n", d, print_res);
 	if(d == 0 && a->precision == 0)
 		print_res = 0;
+	//printf("HEREEE:d=%lld\ns=%s\n", d, &print_res[0]);
+
 	if (a->width > 0 && a->width >= ft_strlen(print_res))
 		*spaces = a->width - ft_strlen(print_res);
 	if (a->precision != -1 && (a->precision >= ft_getsize(d, 10)))
@@ -43,6 +45,7 @@ void type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 		ft_putstr("+");
 	put_chr_n('0', *zeros);
 	ft_putstr(&print_res[neg]);
+	//printf("\nAAAAA%s\n", print_res);
 }
 
 int type_di(t_param *a, va_list ap)
@@ -56,16 +59,16 @@ int type_di(t_param *a, va_list ap)
 	zeros = 0;
 	res = 0;
 	d = get_di(a, ap);
-	//printf("in type_d:%jd\n", d);
+	//printf("in type_d:%lld\n", d);
 
 	type_di_help(a, d, &spaces, &zeros);
 
 	if (a->flag && ft_strcmp(a->flag, "-") == 0)
 		put_chr_n(' ', spaces - zeros);
-	if ((a->flag && ft_strcmp(a->flag, "+") == 0) || d < 0)
+	if ((a->flag && ft_strcmp(a->flag, "+") == 0))
 		res++;
 
-	res += ft_getsize(d, 10) + ft_max(spaces, zeros);
+	res += ft_strlen(ft_itoa_base(d, 10)) + ft_max(spaces, zeros);
 	if(d == 0 && a->precision == 0)
 		res--;
 	//printf("\nres=%i",res);

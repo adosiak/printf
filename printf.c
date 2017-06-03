@@ -2,7 +2,7 @@
 #include "libft.h"
 #include "header.h"
 
-char g_lengths[8][3] = {"hh","h","ll","l","j","z","L","t"};
+char g_lengths[8][3] = {"hh","h","l","ll","j","z","L","t"};
 char g_types[14][2] = {"s","S","p","d","D","i","o","O","u","U","x","X","c","C"}	;
 
 int		ft_strchr0(const char *str, int pos, int c)

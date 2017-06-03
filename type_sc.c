@@ -29,29 +29,25 @@ int		type_s(t_param *a, va_list ap)
 
 	if (!str)
 		str = "(null)";
-	/*if (a->precision != -1)
+	else if (str[0] && a->precision != -1)
 		spaces = a->width - a->precision;
-	else*/
+	else if (!str[0])
 		spaces = a->width - ft_strlen(str);
+	//printf("1.spaces:%d\n", spaces);
 
 	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
 		put_chr_n(' ', spaces);
 	res = ft_strlen(str);
-
-
-
+//printf("reshere:%d\n", res);
 
 	if (a->precision == -1)
 		ft_putstr(str);
 	else
 	{
-	//		printf("\n!!!rpres=%d", a->precision);
+		//	printf("\n!!!rpres=%d", a->precision);
 		tmp = ft_strsub(str, 0, a->precision);
-		if(str)
-		{
+		if(str[0])
 			res = a->precision;
-			printf("hetr");
-		}
 		ft_putstr(tmp);
 		free(tmp);
 	}

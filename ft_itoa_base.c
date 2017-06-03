@@ -39,13 +39,14 @@ char		*ft_itoa_base(long long value, int base)
 	str = (char *)malloc(sizeof(char) * ft_getsize(value, base) + 1);
 	i = 0;
 	flag = 0;
-	//if (value == -2147483648)
-		//return ("-2147483648");
+	if (value == (1LL<<(sizeof(long long) * 8 -1)))//-9223372036854775808)
+		return ("-9223372036854775808");
 	if (value < 0)
 	{
 		value = value * (-1);
 		flag = 1;
 	}
+	//printf("value=%lld\n", value);
 	while (value >= (long long)base)
 	{
 		put_hex(value % base, str, i);

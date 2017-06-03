@@ -21,13 +21,13 @@ int		work_var(t_param *a, va_list ap)
 
 	if (a->type != -1)
 	{
+
+	if (a->type == 0 || a->type == 1)
+	{
 		if (a->spaces != 0)
-		{
-			ft_putstr(" ");
-			res++;
-		}
-	if (a->type == 0)
+			res += put_chr_n(' ', 1);
 		res += type_s(a, ap);
+	}
 	if (a->type == 2)
 		res += type_p(a, ap);
 	if (a->type == 3 || a->type == 5)
@@ -44,7 +44,7 @@ if (a->type == -1)
 return (res + ft_strlen(a->extra));
 }
 
-void	put_chr_n(char c, int n)
+int	put_chr_n(char c, int n)
 {
 	int i;
 
@@ -54,4 +54,5 @@ void	put_chr_n(char c, int n)
 		ft_putchar(c);
 		i++;
 	}
+	return (n);
 }
