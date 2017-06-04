@@ -14,8 +14,14 @@
 
 int		ft_max(int a, int b)
 {
+	int ret;
+
 	if (a >= b)
-		return (a);
+		ret = a;
 	else
-		return (b);
+		ret = b;
+	if (ret < 0)
+		return (0);
+else
+	return (ret);
 }

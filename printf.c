@@ -27,7 +27,11 @@ t_param		*create_node(void)// maybe I don't need this?
 
 	new = (t_param *)malloc(sizeof(t_param));
 	new->parameter = 0;
-	new->flag = 0;
+	new->flag.is = 0;
+	new->flag.p_flg = 0;
+	new->flag.n_flg = 0;
+	new->flag.h_flg = 0;
+	new->flag.z_flg = 0;
 	new->width = -1;
 	new->precision = -1;
 	new->length = -1;
@@ -67,9 +71,11 @@ int		ft_printf(char *fmt, ...)
 		len_work_str = ft_strlen(work_str);
 
 		a = parse(work_str);
-		//printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
-		//printf("\nparameter=%i\nflag=%s\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->flag, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
-   //printf("\n1.res in printf:%d\n", res);
+		/*printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+		printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
+		printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
+*/
+	 //printf("\n1.res in printf:%d\n", res);
 		res += work_var(a, ap);
 		//printf("\n2.res in printf:%d\n", res);
 		start = start + len_work_str;//+ ft_strlen(work_str);

@@ -23,32 +23,39 @@ int		main(void)
 	float f = 10.0202;
 	char *aa = NULL;
 //----%s----
-//	printf("1.res=%i\n", ft_printf("   %-5%"));
-	//printf("\n---\n");
-	//printf("\n2.res=%i\n", printf("%#08x", 42));
-//---%d-----
-/*	printf("MY:%i\n", ft_printf("% 0    d", b));
-	printf("cr:%i\n", printf("% 0 d", b));*/
-//	ft_printf("%5.2s is a string", "");
-printf("my:%d\n",ft_printf("\n%U", ULONG_MAX));
-printf("cr:%d\n", printf("\n%U", ULONG_MAX));
+//printf("MY:%i\n", ft_printf("% d string. gg!", "this", "string"));
+//printf("cr:%i\n", printf("% d string. gg!", "this", "string"));
 
-printf("%d %d %d\n", sizeof(int), sizeof(long), sizeof(long long));
+
+//---%d-----
+	//printf("MY:%i\n", ft_printf("% 0    d", b));
+	//printf("cr:%i\n", printf("% 0    d", b));
+
+	/*printf("MY:%i\n", ft_printf("% d", 0));
+	printf("cr:%i\n", printf("% d", 0));*/
+
+//	ft_printf("%5.2s is a string", "");
+
+//----%U-----FIX THIS
+//printf("my:%d\n",ft_printf("\n%U", ULONG_MAX));
+//printf("cr:%d\n", printf("\n%U", ULONG_MAX));
+
+//printf("%d %d %d\n", sizeof(int), sizeof(long), sizeof(long long));
 	//printf("\nMY:%i\n", ft_printf("%5.2s is a string", ""));
 	//printf("\ncr:%i\n", printf("%5.2s is a string", ""));
 // ---%u------
 	//printf("MY:%i\n", ft_printf("%%u:%-0u\n", b));
 //	printf("cr:%i\n", printf("%%u:%-0u\n", b));
 	 //---%o------
-		/*printf("MY:%i\n", ft_printf("%%o:%.0o\n", b));
-		printf("cr:%i\n", printf("%%o:%.0o\n", b));*/
+		printf("MY:%i\n", ft_printf("@moulitest: %5.o %5.0o", 0, 0));
+		printf("cr:%i\n", printf("@moulitest: %5.o %5.0o", 0, 0));
 
 
 
 		//---%x------
-// 		printf("MY:%i\n", ft_printf("%%x:%0#8x\n", 42));
- //		printf("cr:%i\n", printf("%%x:%0#8x\n", 42));
-
+ 		/*printf("MY:%i\n", ft_printf("%%x:@moulitest: %#.x %#.0x", 0, 0));
+ 		printf("cr:%i\n", printf("%%x:@moulitest: %#.x %#.0x", 0, 0));
+*/
 		//---%p------
 	/*printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
 	printf("cr:%i\n", printf("%%p:%1p\n", a1));*/

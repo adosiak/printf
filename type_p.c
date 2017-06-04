@@ -28,10 +28,10 @@ int type_p(t_param *a, va_list ap)
 	if (a->width > res)
 		spaces = a->width - res;
 
-	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
+	if (a->flag.n_flg != 1)
 		put_chr_n(' ', spaces);
 	ft_putstr(str);
-	if (a->flag && ft_strcmp(a->flag, "-") == 0)
+	if (a->flag.n_flg == 1)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
   return(res);

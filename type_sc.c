@@ -23,6 +23,7 @@ int		type_s(t_param *a, va_list ap)
 
 	//i = -1;
 	str = va_arg(ap, char *);
+	//printf("\nstr=%s\n", str);
 	spaces = 0;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
 	// if (a->flag == "+, #, 0") undefined behavior
@@ -31,11 +32,11 @@ int		type_s(t_param *a, va_list ap)
 		str = "(null)";
 	else if (str[0] && a->precision != -1)
 		spaces = a->width - a->precision;
-	else if (!str[0])
+	else
 		spaces = a->width - ft_strlen(str);
-	//printf("1.spaces:%d\n", spaces);
+	//printf("1.spaces:%d\nwidth=%i\n", spaces, a->width);
 
-	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
+	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	res = ft_strlen(str);
 //printf("reshere:%d\n", res);
@@ -51,7 +52,7 @@ int		type_s(t_param *a, va_list ap)
 		ft_putstr(tmp);
 		free(tmp);
 	}
-	if (a->flag && ft_strcmp(a->flag, "-") == 0)
+	if (a->flag.n_flg == 1)
 		put_chr_n(' ', spaces);
 	if (spaces > 0)
 		res = res + spaces;
@@ -74,11 +75,11 @@ int type_c(t_param *a, va_list ap)
 	if (a->width > 1)
 		spaces = a->width - 1;
 
-	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
+	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	ft_putchar(c);
 
-	if (a->flag && ft_strcmp(a->flag, "-") == 0)
+	if (a->flag.n_flg == 1)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
   return(res);
@@ -101,10 +102,10 @@ int no_type(t_param *a)
 
 	//printf("\nnew extra=%s\n", a->extra);
 
-	if (!a->flag || ft_strcmp(a->flag, "-") != 0)
+	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	ft_putchar(a->extra[0]);
-	if (a->flag && ft_strcmp(a->flag, "-") == 0)
+	if (a->flag.n_flg == 1)
 		put_chr_n(' ', spaces);
 
 	if (a->extra[1])

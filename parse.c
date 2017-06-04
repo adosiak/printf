@@ -18,6 +18,7 @@ int			str_in_str(char *str, int what)
 	int i;
 
 	i = 0;
+
 	if (what == 1) // search length
 		while (i < 8)
 		{
@@ -70,17 +71,27 @@ void		get_length_type(char *str, int delta, t_param *a, int width_len)
 	}
 }
 
-int			get_delta(t_param *a, int *flag, char *str)
+int			get_delta(t_param *a, int *flag, char *str, int pres_flag)
 {
 	int delta;
 	int i;
 
+	delta = pres_flag;
 
-	delta = 0;
+	if (a->flag.n_flg)
+		delta++;
+	if (a->flag.p_flg)
+			delta++;
+	if (a->flag.z_flg)
+			delta++;
+	if (a->flag.h_flg)
+			delta++;
+	if (delta > 0)
+		a->flag.is = 1;
+
 	if (a->parameter)
 		delta += ft_getsize(a->parameter, 10) + 1;
-	if (a->flag)
-		delta++;
+
 	if (a->width >= 0)
 		delta = delta + ft_getsize(a->width, 10);
 	if (a->precision >= 0)
@@ -104,49 +115,80 @@ int			get_delta(t_param *a, int *flag, char *str)
 	return (delta + a->spaces);
 }
 
+void parse_flag(t_param *a, int *flag, char *str, int pres_flag)
+{
+	int pos;
+
+	pos = get_delta(a, flag, str, pres_flag)+ 1;
+	while (str[pos] == '#' || str[pos] == '+'|| str[pos] == '-' || str[pos] == '0' || str[pos] == ' ')
+	{
+	if (str[pos] == '#')
+		a->flag.h_flg = 1;
+	else if (str[pos] == '+')
+		a->flag.p_flg = 1;
+	else if (str[pos] == '-')
+			a->flag.n_flg = 1;
+	else if (str[pos] == '0')
+		a->flag.z_flg = 1;
+	pos = get_delta(a, flag, str, pres_flag)+ 1;
+	}
+}
+
 t_param		*parse(char *str)
 {
 	t_param *a;
 	int flag;
+	int pos;
+	int pres_flag;
 
 	a = create_node();
 	flag = 0;
-/*	if (str[1] == '%')
-	{
-		a->extra = ft_strdup(&str[1]);
-		return (a);
-	}
-	*/
+	pres_flag = 0;
 
 	if (ft_strchr0(str, 0, '$') > 0)
 		a->parameter = ft_atoi(&str[1]);
 //	printf("\nstr:%s\n",str);
+	parse_flag(a, &flag, str, pres_flag);
+	//printf("\n1.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
 
-	//printf("\n1.Print get_delta:%i\n",get_delta(a, &flag, str));
 
-	if (str[get_delta(a, &flag, str) + 1] == '#' || str[get_delta(a, &flag, str) + 1] == '0' ||
-			str[get_delta(a, &flag, str) + 1] == '+' || str[get_delta(a, &flag, str) + 1] == '-')
-		a->flag = ft_strsub(str, get_delta(a, &flag, str) + 1, 1);
-//	printf("2.Print get_delta:%i\n",get_delta(a, &flag, str));
-
-	a->width = ft_atoi(&str[get_delta(a, &flag, str) + 1]);
-	//printf("!!!!!!!Here: %s", &str[get_delta(a, &flag, str) + 1]);
-	if (a->width == 0 && str[get_delta(a, &flag, str) - a->spaces] != '0')
+//	printf("2.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
+	pos = get_delta(a, &flag, str, pres_flag) + 1;
+	//printf("\nstr=%s\nw_pos=%i\n", str, w_pos);
+	a->width = ft_atoi(&str[pos]);
+	//printf("!!!!!!!Here: %s", &str[get_delta(a, &flag, str, pres_flag) + 1]);
+	if (a->width == 0 && str[pos] != '0')
 	{
 		a->width = -1;
-		a->spaces = 0;
-		flag = 0;
+		//a->spaces = 0;
+		//flag = 0;
 	}
-	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str));
-	printf("\nAAA:%s", &str[get_delta(a, &flag, str) + 1]);*/
+	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
+	printf("\nAAA:%s", &str[get_delta(a, &flag, str, pres_flag) + 1]);*/
 
 	if (ft_strchr0(str, 0, '.') > 0)
-		a->precision = ft_atoi(&str[get_delta(a, &flag, str) + 1 + 1]);// + 1 for '.'
-	get_length_type(str, get_delta(a, &flag, str), a, 1);
+	{
+		pos = get_delta(a, &flag, str, pres_flag) + 1 + 1;// + 1 for '.'
+		a->precision = ft_atoi(&str[pos]);
+
+		if (!ft_isdigit(str[pos]))
+	//		a->precision = ft_atoi(&str[pos]);
+//		else
+		//{
+	 		pres_flag = -1;// in case "%.s"
+		//	a->precision = 0;
+		//}
+	}
+	pos = get_delta(a, &flag, str, pres_flag);
+	if (ft_strchr0(str, 0, '.') > pos)
+			a->precision = -1;
+	get_length_type(str, pos, a, 1);
+	//if (!ft+strstr[get_delta(a, &flag, str, pres_flag)])
 	//DO I need this check?
 /*	if (a->type >= 0)
 		delta++;*/
-	a->extra = ft_strdup(&str[get_delta(a, &flag, str) + 1]);
+
+	a->extra = ft_strdup(&str[get_delta(a, &flag, str, pres_flag) + 1]);
 	return (a);
 }
 
