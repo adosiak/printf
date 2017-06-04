@@ -112,6 +112,8 @@ int			get_delta(t_param *a, int *flag, char *str, int pres_flag)
 			break ;
 		i++;
 	}
+	if (delta < 0)
+		return (0);
 	return (delta + a->spaces);
 }
 
@@ -187,11 +189,20 @@ t_param		*parse(char *str)
 	//DO I need this check?
 /*	if (a->type >= 0)
 		delta++;*/
-
+//printf("\n\n position:%i\n", get_delta(a, &flag, str, pres_flag));
 	a->extra = ft_strdup(&str[get_delta(a, &flag, str, pres_flag) + 1]);
 	return (a);
 }
 
+int get_end(char *str, int start)
+{
+	int end;
+
+	end = ft_strchr0(str, start + 1, '%');
+	if (end < 0)
+		end = ft_strlen(str);
+	return (end);
+}
 char		*get_work_str(char *str)
 {
 	int start;
@@ -201,18 +212,26 @@ char		*get_work_str(char *str)
 	t_param *a;
 
 	start = ft_strchr0(str, 0, '%');
+	//printf("\n1.1.str in get_work_str=%s\n", str);
 
 	if (start < 0)
 		return (0);
-	end = ft_strchr0(str, start + 1, '%');
+	/*end = ft_strchr0(str, start + 1, '%');
 	if (end < 0)
-		end = ft_strlen(str);
+		end = ft_strlen(str);*/
+	end = get_end(str, start);
+	if (end - start == 1)
+		return (ft_strsub(str, 0, get_end(str, end)));
+
 
 	res = ft_strsub(str, start, end);
-	//printf("\nres in get_work_str=%s", res);
+
+	//printf("\n1.res in get_work_str=%s\n", res);
 	a = parse(res);
 	if (end != ft_strlen(str) && a->type == -1)
 		res = ft_strjoin(ft_strsub(str, 0, end), get_work_str(&str[end]));
+	//printf("\n2.res in get_work_str=%s", res);
+
 	return (res);
 	//printf("\nstart=%i, end=%i\n", start, end);
 	//handling %%
