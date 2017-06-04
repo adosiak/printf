@@ -47,8 +47,12 @@ int		main(void)
 	//printf("MY:%i\n", ft_printf("%%u:%-0u\n", b));
 //	printf("cr:%i\n", printf("%%u:%-0u\n", b));
 	 //---%o------
-		printf("MY:%i\n", ft_printf("@moulitest: %5.o %5.0o", 0, 0));
-		printf("cr:%i\n", printf("@moulitest: %5.o %5.0o", 0, 0));
+		//printf("MY:%i\n", ft_printf("%10.5d", 4242));
+	//	printf("cr:%i\n", printf("%10.5d", 4242));
+
+		printf("MY:%i\n", ft_printf("%0+5d", -42));
+		printf("cr:%i\n", printf("%0+5d", -42));
+
 
 
 

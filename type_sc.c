@@ -52,7 +52,7 @@ int		type_s(t_param *a, va_list ap)
 		ft_putstr(tmp);
 		free(tmp);
 	}
-	if (a->flag.n_flg == 1)
+	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);
 	if (spaces > 0)
 		res = res + spaces;
@@ -79,7 +79,7 @@ int type_c(t_param *a, va_list ap)
 		put_chr_n(' ', spaces);
 	ft_putchar(c);
 
-	if (a->flag.n_flg == 1)
+	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
   return(res);
@@ -105,7 +105,7 @@ int no_type(t_param *a)
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	ft_putchar(a->extra[0]);
-	if (a->flag.n_flg == 1)
+	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);
 
 	if (a->extra[1])

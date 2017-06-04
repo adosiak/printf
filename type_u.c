@@ -28,7 +28,7 @@ char *str_toupper(char *str)
 }
 char *flag_xo_help(t_param *a, int *spaces, int *zeros)
 {
-	if (a->flag.h_flg == 1)
+	if (a->flag.h_flg)
 	{
 		if (a->type == 10 || a->type == 11)
 		{
@@ -59,10 +59,10 @@ char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zero
 		print_res = unsign_itoa_base(d, 10);
 	else if (a->type == 10 || a->type == 11)
 		print_res = unsign_itoa_base(d, 16);
-	res_len = ft_strlen(print_res);
 
 	if(d == 0 && a->precision == 0)
 		print_res = 0;
+	res_len = ft_strlen(print_res);
 	if (a->width > 0 && a->width >= res_len)
 		*spaces = a->width - res_len;
 	if (a->precision != -1 && (a->precision >= res_len))
@@ -72,12 +72,12 @@ char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zero
 
 	print_x_flag = flag_xo_help(a, spaces, zeros);
 
-	if (a->flag.z_flg == 1 && a->precision == -1)
+	if (a->flag.z_flg && a->precision == -1)
 		*zeros = *spaces;
 
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', *spaces - *zeros);
-	if (d > 0)
+	if (d > 0 || (a->type == 6 || a->type == 7))
 		ft_putstr(print_x_flag);
 	put_chr_n('0', *zeros);
 	if (a->type == 11)
@@ -105,9 +105,9 @@ int type_uox(t_param *a, va_list ap)
 	print_res = type_uox_help(a, d, &spaces, &zeros);
 	//  printf("\n\n0.res=%i\nprint_res_len=%i\nfla_h=%i\ntype=%i\n",res, ft_strlen(print_res),a->flag.h_flg, a->type);
 
-	if (a->flag.n_flg == 1)
+	if (a->flag.n_flg)
 		put_chr_n(' ', spaces - zeros);
-	if (a->flag.h_flg == 1 && d > 0)
+	if (a->flag.h_flg && (d > 0 || (a->type == 6 || a->type == 7)))
   {
     if (a->type == 10 || a->type == 11)
     	res += 2;
@@ -118,7 +118,7 @@ int type_uox(t_param *a, va_list ap)
 	//  printf("1.res in type_uox:%d", res);
 	res += ft_strlen(print_res) + ft_max(spaces, zeros);
 	//  printf("\n2.res in type_uox:%d\n", res);
-	if(d == 0 && a->precision == 0 && res > 0)
-		res--;
+	//if(d == 0 && a->precision == 0 && res > 0)
+	//	res--;
 	return (res);
 }

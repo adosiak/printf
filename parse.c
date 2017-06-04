@@ -79,13 +79,13 @@ int			get_delta(t_param *a, int *flag, char *str, int pres_flag)
 	delta = pres_flag;
 
 	if (a->flag.n_flg)
-		delta++;
+		delta += a->flag.n_flg;
 	if (a->flag.p_flg)
-			delta++;
+		delta += a->flag.p_flg;
 	if (a->flag.z_flg)
-			delta++;
+			delta += a->flag.z_flg;
 	if (a->flag.h_flg)
-			delta++;
+		delta += a->flag.h_flg;
 	if (delta > 0)
 		a->flag.is = 1;
 
@@ -123,13 +123,13 @@ void parse_flag(t_param *a, int *flag, char *str, int pres_flag)
 	while (str[pos] == '#' || str[pos] == '+'|| str[pos] == '-' || str[pos] == '0' || str[pos] == ' ')
 	{
 	if (str[pos] == '#')
-		a->flag.h_flg = 1;
+		a->flag.h_flg++;
 	else if (str[pos] == '+')
-		a->flag.p_flg = 1;
+		a->flag.p_flg++;
 	else if (str[pos] == '-')
-			a->flag.n_flg = 1;
+			a->flag.n_flg++;
 	else if (str[pos] == '0')
-		a->flag.z_flg = 1;
+		a->flag.z_flg++;
 	pos = get_delta(a, flag, str, pres_flag)+ 1;
 	}
 }

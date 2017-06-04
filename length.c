@@ -4,7 +4,9 @@
 
 unsigned long long get_uox(t_param *a, va_list ap)
 {
-    if (a->length == 0)
+   if (a->type == 9)
+      return (va_arg(ap, unsigned long));
+    else if (a->length == 0)
       return((unsigned char)va_arg(ap, unsigned int));
     else if (a->length == 1)
       return((unsigned short)va_arg(ap, unsigned int));

@@ -83,7 +83,7 @@ int		ft_printf(char *fmt, ...)
 		i++;
 
 	}
-	//printf("RES in printf:%i\n", res);
+	//printf("\nRES in printf:%i\n", res);
 	return (res);
 
 	//	va_copy(ap2, ap);
