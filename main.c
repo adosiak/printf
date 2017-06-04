@@ -50,9 +50,8 @@ int		main(void)
 		//printf("MY:%i\n", ft_printf("%10.5d", 4242));
 	//	printf("cr:%i\n", printf("%10.5d", 4242));
 
-		printf("MY:%i\n", ft_printf("%0+5d", -42));
-		printf("cr:%i\n", printf("%0+5d", -42));
-
+		printf("MY:%i\n", ft_printf("%#x", 0));
+		printf("cr:%i\n", printf("%#x", 0));
 
 
 

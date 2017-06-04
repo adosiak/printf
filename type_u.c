@@ -60,7 +60,7 @@ char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zero
 	else if (a->type == 10 || a->type == 11)
 		print_res = unsign_itoa_base(d, 16);
 
-	if(d == 0 && a->precision == 0)
+	if(d == 0 && (a->precision == 0 || (a->flag.h_flg && a->type < 10)))
 		print_res = 0;
 	res_len = ft_strlen(print_res);
 	if (a->width > 0 && a->width >= res_len)
@@ -77,7 +77,7 @@ char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zero
 
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', *spaces - *zeros);
-	if (d > 0 || (a->type == 6 || a->type == 7))
+	if (!(d == 0 && (a->type == 10 || a->type == 11))) //|| (a->type == 6 || a->type == 7))
 		ft_putstr(print_x_flag);
 	put_chr_n('0', *zeros);
 	if (a->type == 11)

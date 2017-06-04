@@ -75,7 +75,7 @@ int type_di(t_param *a, va_list ap)
 	d = get_di(a, ap);
 	//printf("in type_d:%lld\n", d);
 
-	if (a->spaces > 0 && a->flag.is == 0 && d >= 0 && a->width == -1)
+	if (a->spaces > 0 && !a->flag.is && d >= 0 && a->width <= a->precision)
 		res = put_chr_n(' ', 1);
 
 	type_di_help(a, d, &spaces, &zeros);

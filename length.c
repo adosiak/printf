@@ -27,7 +27,7 @@ long long get_di(t_param *a, va_list ap)
       return((char)va_arg(ap, int));
     else if (a->length == 1)
       return((short)va_arg(ap, int));
-    else if (a->length == 2)
+    else if (a->length == 2 || a->type == 4)
       return(va_arg(ap, long));
     else if (a->length == 3)
       return(va_arg(ap, long long));
