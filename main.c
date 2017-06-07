@@ -23,16 +23,16 @@ int		main(void)
 	float f = 10.0202;
 	char *aa = NULL;
 //----%s----
-//printf("MY:%i\n", ft_printf("% d string. gg!", "this", "string"));
-//printf("cr:%i\n", printf("% d string. gg!", "this", "string"));
+printf("MY:%i\n", ft_printf("%s string. gg!", "this", "string"));
+printf("cr:%i\n", printf("%s string. gg!", "this", "string"));
 
 
 //---%d-----
 	//printf("MY:%i\n", ft_printf("% 0    d", b));
 	//printf("cr:%i\n", printf("% 0    d", b));
 
-	printf("MY:%i\n", ft_printf("%D", 0000042));
-	printf("cr:%i\n", printf("%D", 0000042));
+	//printf("MY:%i\n", ft_printf("%D", 0000042));
+	//printf("cr:%i\n", printf("%D", 0000042));
 
 //	ft_printf("%5.2s is a string", "");
 

@@ -72,7 +72,7 @@ int		ft_printf(char *fmt, ...)
 
 		a = parse(work_str);
 		free(work_str);
-		/*printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
+	/*	printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
 		printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
 		printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
 */
