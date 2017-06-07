@@ -49,8 +49,7 @@ int		type_s(t_param *a, va_list ap)
 		tmp = ft_strsub(str, 0, a->precision);
 		if(str[0])
 			res = a->precision;
-		ft_putstr(tmp);
-		free(tmp);
+		ft_putfree(tmp);
 	}
 	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);

@@ -117,6 +117,7 @@ int type_uox(t_param *a, va_list ap)
 
 	//  printf("1.res in type_uox:%d", res);
 	res += ft_strlen(print_res) + ft_max(spaces, zeros);
+	free(print_res);
 	//  printf("\n2.res in type_uox:%d\n", res);
 	//if(d == 0 && a->precision == 0 && res > 0)
 	//	res--;

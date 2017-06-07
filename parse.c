@@ -47,11 +47,13 @@ void		get_length_type(char *str, int delta, t_param *a, int width_len)
 		return ;// ERROR_FUNC SHOULD BE HERE
 	length = ft_strsub(str, delta + 1, width_len);
 	a->length = str_in_str(length, 1);
+	free(length);
 	if (a->length >= 0)
 	{
 		delta = delta + width_len;
 		type = ft_strsub(str, delta + 1, 1);
 		a->type = str_in_str(type, 2);
+		free(type);
 		if(a->type >= 0)
 			return ;
 		else
@@ -64,6 +66,7 @@ void		get_length_type(char *str, int delta, t_param *a, int width_len)
 	{
 		type = ft_strsub(str, delta + 1, 1);
 		a->type = str_in_str(type, 2);
+		free(type);
 		if(a->type >= 0)
 			return ;
 		else
@@ -208,46 +211,26 @@ char		*get_work_str(char *str)
 	int start;
 	int end;
 	char *res;
-	int new_end;
 	t_param *a;
+	char *tmp;
 
 	start = ft_strchr0(str, 0, '%');
-	//printf("\n1.1.str in get_work_str=%s\n", str);
-
 	if (start < 0)
 		return (0);
-	/*end = ft_strchr0(str, start + 1, '%');
-	if (end < 0)
-		end = ft_strlen(str);*/
 	end = get_end(str, start);
 	if (end - start == 1)
 		return (ft_strsub(str, 0, get_end(str, end)));
-
-
 	res = ft_strsub(str, start, end);
-
 	//printf("\n1.res in get_work_str=%s\n", res);
 	a = parse(res);
+	free(a->extra);
+	free(a);
 	if (end != ft_strlen(str) && a->type == -1)
-		res = ft_strjoin(ft_strsub(str, 0, end), get_work_str(&str[end]));
-	//printf("\n2.res in get_work_str=%s", res);
-
-	return (res);
-	//printf("\nstart=%i, end=%i\n", start, end);
-	//handling %%
-	/*if (end - start == 1)
 	{
-	//	printf("\nHERE\n");
-		new_end = end;
-		if (end != (int)ft_strlen(str))
-			new_end = ft_strchr0(str,end + 1, '%');
-	//	printf("\n new_end=%i\n", new_end);
-		if (new_end < 0)
-			new_end = ft_strlen(str);
-		res = ft_strsub(str, start, new_end);
+		tmp = ft_strsub(str, 0, end);
+		res = ft_strjoin(tmp, get_work_str(&str[end]));
+		free(tmp);
 	}
-	else
-		res = ft_strsub(str, start, end);
-	parse(res);
-	return (res);*/
+	//printf("\n2.res in get_work_str=%s", res);
+	return (res);
 }

@@ -19,10 +19,12 @@ int type_p(t_param *a, va_list ap)
   int res;
 	int spaces;
   char *str;
+  char * tmp;
 
-	p = (unsigned long long)va_arg(ap, void *);
-  str = ft_strjoin("0x", unsign_itoa_base(p, 16));
-  res = ft_strlen(str);
+  tmp = unsign_itoa_base(p, 16);
+  p = (unsigned long long)va_arg(ap, void *);
+  str = ft_strjoin("0x", tmp);
+  free(tmp);
 	spaces = 0;
 	// if (a->flag == "+, #, 0" or width == 0 or length != -1) undefined behavior
 	if (a->width > res)
@@ -30,7 +32,7 @@ int type_p(t_param *a, va_list ap)
 
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
-	ft_putstr(str);
+	res = ft_putfree(str);
 	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
