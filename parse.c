@@ -155,19 +155,13 @@ t_param		*parse(char *str)
 //	printf("\nstr:%s\n",str);
 	parse_flag(a, &flag, str, pres_flag);
 	//printf("\n1.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
-
-
 //	printf("2.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
 	pos = get_delta(a, &flag, str, pres_flag) + 1;
 	//printf("\nstr=%s\nw_pos=%i\n", str, w_pos);
 	a->width = ft_atoi(&str[pos]);
 	//printf("!!!!!!!Here: %s", &str[get_delta(a, &flag, str, pres_flag) + 1]);
 	if (a->width == 0 && str[pos] != '0')
-	{
 		a->width = -1;
-		//a->spaces = 0;
-		//flag = 0;
-	}
 	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
 	printf("\nAAA:%s", &str[get_delta(a, &flag, str, pres_flag) + 1]);*/
 
@@ -177,21 +171,13 @@ t_param		*parse(char *str)
 		a->precision = ft_atoi(&str[pos]);
 
 		if (!ft_isdigit(str[pos]))
-	//		a->precision = ft_atoi(&str[pos]);
-//		else
-		//{
 	 		pres_flag = -1;// in case "%.s"
-		//	a->precision = 0;
-		//}
 	}
 	pos = get_delta(a, &flag, str, pres_flag);
 	if (ft_strchr0(str, 0, '.') > pos)
 			a->precision = -1;
 	get_length_type(str, pos, a, 1);
-	//if (!ft+strstr[get_delta(a, &flag, str, pres_flag)])
-	//DO I need this check?
-/*	if (a->type >= 0)
-		delta++;*/
+
 //printf("\n\n position:%i\n", get_delta(a, &flag, str, pres_flag));
 	a->extra = ft_strdup(&str[get_delta(a, &flag, str, pres_flag) + 1]);
 	return (a);

@@ -46,26 +46,31 @@ char *flag_xo_help(t_param *a, int *spaces, int *zeros)
 	}
 	return 0;
 }
-
-char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zeros)
+char *aaaa(t_param *a, unsigned long long int d, int *res_len)
 {
-	int res_len;
-	char *print_res;
-	char *print_x_flag;
-
+		char *print_res;
 	if (a->type == 6 || a->type == 7)
 		print_res = unsign_itoa_base(d, 8);
 	else if (a->type == 8 || a->type == 9)
 		print_res = unsign_itoa_base(d, 10);
 	else if (a->type == 10 || a->type == 11)
 		print_res = unsign_itoa_base(d, 16);
-
 	if(d == 0 && (a->precision == 0 || (a->flag.h_flg && a->type < 10)))
 		print_res = 0;
-	res_len = ft_strlen(print_res);
-	if (a->width > 0 && a->width >= res_len)
-		*spaces = a->width - res_len;
-	if (a->precision != -1 && (a->precision >= res_len))
+	*res_len = ft_strlen(print_res);
+	return (print_res);
+}
+char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zeros)
+{
+	int res_len;
+	char *print_res;
+	char *print_x_flag;
+
+	res_len = 0;
+	print_res = aaaa(a, d, &res_len);
+
+	*spaces = a->width - res_len;
+	if (a->precision >= res_len)
 		*zeros = a->precision - res_len;
   if (d == 0 && a->flag.h_flg && a->precision == -1)
     (*spaces)++;
@@ -114,12 +119,9 @@ int type_uox(t_param *a, va_list ap)
     if (a->type == 6 || a->type == 7)
       res += 1;
   }
-
 	//  printf("1.res in type_uox:%d", res);
 	res += ft_strlen(print_res) + ft_max(spaces, zeros);
 	free(print_res);
 	//  printf("\n2.res in type_uox:%d\n", res);
-	//if(d == 0 && a->precision == 0 && res > 0)
-	//	res--;
 	return (res);
 }

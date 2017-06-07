@@ -30,7 +30,7 @@ int		work_var(t_param *a, va_list ap)
 	}
 	if (a->type == 2)
 		res += type_p(a, ap);
-	if (a->type == 3 || a->type == 5)
+	if (a->type >= 3 && a->type <= 5)
 		res += type_di(a, ap);
 
 	if (a->type >= 6 && a->type <= 11)

@@ -31,8 +31,8 @@ int		main(void)
 	//printf("MY:%i\n", ft_printf("% 0    d", b));
 	//printf("cr:%i\n", printf("% 0    d", b));
 
-	/*printf("MY:%i\n", ft_printf("% d", 0));
-	printf("cr:%i\n", printf("% d", 0));*/
+	printf("MY:%i\n", ft_printf("%D", 0000042));
+	printf("cr:%i\n", printf("%D", 0000042));
 
 //	ft_printf("%5.2s is a string", "");
 
@@ -50,10 +50,10 @@ int		main(void)
 		//printf("MY:%i\n", ft_printf("%10.5d", 4242));
 	//	printf("cr:%i\n", printf("%10.5d", 4242));
 
-		printf("\nMY:%i\n", ft_printf("%%-5.3s", "LIDA"));
-		printf("\ncr:%i\n", printf("%%-5.3s", "LIDA"));
+		//printf("\nMY:%i\n", ft_printf("%%-5.3s", "LIDA"));
+		//printf("\ncr:%i\n", printf("%%-5.3s", "LIDA"));
 
-
+//ft_printf("%lld", -9223372036854775808);
 
 		//---%x------
  		/*printf("MY:%i\n", ft_printf("%%x:@moulitest: %#.x %#.0x", 0, 0));

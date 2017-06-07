@@ -29,13 +29,10 @@ void type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 
 	if (a->flag.n_flg)
 		a->flag.z_flg = 0;
-	if (a->width > 0 && a->width >= ft_strlen(print_res))
-		{
-			*spaces = a->width - ft_strlen(print_res);
-			if (a->flag.p_flg && !neg)
-				(*spaces)--;
-		}
-	if (a->precision != -1 && (a->precision >= ft_getsize(d, 10)))
+	*spaces = a->width - ft_strlen(print_res);
+	if (a->flag.p_flg && !neg)
+			(*spaces)--;
+	if (a->precision >= ft_getsize(d, 10))
 		*zeros = a->precision - ft_getsize(d, 10);
 	if ((a->flag.z_flg) && a->precision == -1)
 		*zeros = *spaces;
@@ -48,7 +45,7 @@ void type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 		put_chr_n('+', 1);
 	put_chr_n('0', *zeros);
 	ft_putstr(&print_res[neg]);
-	free(print_res);
+		free(print_res);
 	//printf("\nAAAAA%s\n", print_res);
 }
 
@@ -68,18 +65,14 @@ int type_di(t_param *a, va_list ap)
 	str = ft_itoa_base(d, 10);
 	if (a->spaces > 0 && !a->flag.is && d >= 0 && a->width <= a->precision)
 		res = put_chr_n(' ', 1);
-
 	type_di_help(a, d, &spaces, &zeros);
-
 	if (a->flag.n_flg)
 		put_chr_n(' ', spaces - zeros);
 	if (a->flag.p_flg && d >= 0)
 		res++;
-
 	res += ft_strlen(str) + ft_max(spaces, zeros);
 	free(str);
 	if(d == 0 && a->precision == 0)
 		res--;
-	//printf("\nres=%i",res);
 	return (res);
 }

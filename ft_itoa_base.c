@@ -36,11 +36,12 @@ char		*ft_itoa_base(long long value, int base)
 	int		i;
 	int		flag;
 
-	str = (char *)malloc(sizeof(char) * ft_getsize(value, base) + 1);
 	i = 0;
 	flag = 0;
 	if (value == (1LL<<(sizeof(long long) * 8 -1)))//-9223372036854775808)
-		return ("-9223372036854775808");
+		return (ft_strdup("-9223372036854775808"));
+	str = (char *)malloc(sizeof(char) * ft_getsize(value, base) + 1);
+
 	if (value < 0)
 	{
 		value = value * (-1);

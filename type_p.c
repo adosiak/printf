@@ -29,7 +29,6 @@ int type_p(t_param *a, va_list ap)
 	// if (a->flag == "+, #, 0" or width == 0 or length != -1) undefined behavior
 	if (a->width > res)
 		spaces = a->width - res;
-
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	res = ft_putfree(str);

@@ -44,12 +44,12 @@ t_param		*create_node(void)// maybe I don't need this?
 int		ft_printf(char *fmt, ...)
 {
 	va_list ap;
-	int i = 0;
 	char *work_str;
 	t_param *a;
 	int	start;
 	int	len_work_str;
 	int res;
+	int i = 0;
 
 	va_start(ap, fmt);
 	//printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
@@ -78,26 +78,13 @@ int		ft_printf(char *fmt, ...)
 */
 	 //printf("\n1.res in printf:%d\n", res);
 		res += work_var(a, ap);
-		//if (a->extra)
 		free(a->extra);
 		free(a);
 		//printf("\n2.res in printf:%d\n", res);
 		start = start + len_work_str;//+ ft_strlen(work_str);
 		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);
 		i++;
-
 	}
 	//printf("\nRES in printf:%i\n", res);
 	return (res);
-
-	//	va_copy(ap2, ap);
-	/*	while (fmt[i])
-		{
-		if(fmt[i] == 'd')
-		{
-		d = va_arg(ap, int);
-		printf("%d\n", d);
-		}
-		i++;
-		}*/
 }
