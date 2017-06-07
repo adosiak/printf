@@ -168,11 +168,15 @@ t_param		*parse(char *str)
 	if (ft_strchr0(str, 0, '.') == pos)
 	{
 		pos++;// + 1 for '.'
+
+
 		if (!ft_isdigit(str[pos]))
 	 		pres_flag = -1;// in case "%.s"
 		a->precision = ft_atoi(&str[pos]);
 	}
 	pos = get_delta(a, &flag, str, pres_flag);
+	if (ft_strchr0(str, 0, '.') > pos)
+			a->precision = -1;
 	get_length_type(str, pos, a, 1);
 	//a->spaces += ft_strlen(ft_strsub(str, 0, get_delta(a, &flag, str, pres_flag)))
 
