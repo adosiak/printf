@@ -164,15 +164,14 @@ t_param		*parse(char *str)
 		a->width = -1;
 	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
 	printf("\nAAA:%s", &str[get_delta(a, &flag, str, pres_flag) + 1]);*/
-	pos = get_delta(a, &flag, str, pres_flag) + 1;
-	if (ft_strchr0(str, 0, '.') == pos)
-	{
-		pos++;// + 1 for '.'
 
+	if (ft_strchr0(str, 0, '.') > 0)
+	{
+		pos = get_delta(a, &flag, str, pres_flag) + 1 + 1;// + 1 for '.'
+		a->precision = ft_atoi(&str[pos]);
 
 		if (!ft_isdigit(str[pos]))
 	 		pres_flag = -1;// in case "%.s"
-		a->precision = ft_atoi(&str[pos]);
 	}
 	pos = get_delta(a, &flag, str, pres_flag);
 	if (ft_strchr0(str, 0, '.') > pos)
