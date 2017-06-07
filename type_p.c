@@ -21,8 +21,8 @@ int type_p(t_param *a, va_list ap)
   char *str;
   char * tmp;
 
-  tmp = unsign_itoa_base(p, 16);
   p = (unsigned long long)va_arg(ap, void *);
+  tmp = unsign_itoa_base(p, 16);
   str = ft_strjoin("0x", tmp);
   free(tmp);
 	spaces = 0;
