@@ -54,6 +54,7 @@ int		ft_printf(char *fmt, ...)
 	va_start(ap, fmt);
 	//printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
 
+	printf("%s\n", fmt);
 	start = ft_strchr0(fmt, 0, '%');
 	if (start == -1)
 	{
