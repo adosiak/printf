@@ -35,7 +35,7 @@ int		work_var(t_param *a, va_list ap)
 
 	if (a->type >= 6 && a->type <= 11)
 		res += type_uox(a, ap);
-	if (a->type == 12)
+	if (a->type >= 12)
 		res += type_c(a, ap);
 	ft_putstr(a->extra);
 }
