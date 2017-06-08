@@ -22,10 +22,12 @@ int		main(void)
 	int *a1 = &b;
 	float f = 10.0202;
 	char *aa = NULL;
-//----%s----
+	wchar_t *d = 0;
+	//----%s----
 //printf("MY:%i\n", ft_printf("%s string. gg!", "this", "string"));
 //printf("cr:%i\n", printf("%s string. gg!", "this", "string"));
-//printf("%s\n", input);
+//ft_printf("%S\n", L"Á±≥");
+ft_printf("\n\n\n%S\n", L"@@");
 
 
 //---%d-----
@@ -63,8 +65,8 @@ int		main(void)
  //printf("MY:%i\n", ft_printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100,'a', a, 10, 20, 30, 'i'));
 // printf("cr:%i\n", printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100, 'a', a, 10, 20, 30, 'i'));
 		//---%p------
-	printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
-	printf("cr:%i\n", printf("%%p:%1p\n", a1));
+	//printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
+//	printf("cr:%i\n", printf("%%p:%1p\n", a1));
 
 	//---%f------
 //printf("MY:%i\n", ft_printf("%%p:%p\n", a1));

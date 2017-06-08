@@ -13,16 +13,54 @@
 #include "libft.h"
 #include "header.h"
 
+int		type_ls(t_param *a, va_list ap)
+{
+	wchar_t	*str;
+	int		spaces;
+	int		res;
+	int		i;
+	int		len;
+
+	i = 0;
+	str = va_arg(ap, wchar_t *);
+	spaces = 0;
+	if (!str)
+		str = L"(null)";
+	else if (str[0] && a->precision != -1)
+		spaces = a->width - a->precision;
+	else
+		spaces = a->width - i;
+	if (a->flag.n_flg == 0)
+		put_chr_n(' ', spaces);
+	while (str[i])
+		i++;
+	if (a->precision == -1)
+		len = i;
+	else
+		len = a->precision;
+	i = -1;
+	while (++i < len)
+		write(1, &str[i], 1);
+	res = len;
+	if (a->flag.n_flg)
+		put_chr_n(' ', spaces);
+	if (spaces > 0)
+		res = res + spaces;
+	return (res);
+}
+
 int		type_s(t_param *a, va_list ap)
 {
 	char	*str;
 	int		spaces;
 	int		res;
 
+	if (a->length == 2 || a->type == 1)
+		return (type_ls(a, ap));
+
 	str = va_arg(ap, char *);
 	//printf("\nstr=%s\n", str);
 	spaces = 0;
-	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
 	// if (a->flag == "+, #, 0") undefined behavior
 	if (!str)
 		str = "(null)";
