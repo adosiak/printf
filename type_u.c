@@ -6,19 +6,19 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:42:28 by adosiak           #+#    #+#             */
-/*   Updated: 2017/06/03 19:07:59 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/07 18:31:46 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-char *str_toupper(char *str)
+char	*str_toupper(char *str)
 {
 	int i;
 
 	i = 0;
-	if(str)
+	if (str)
 		while (str[i])
 		{
 			str[i] = ft_toupper(str[i]);
@@ -26,7 +26,8 @@ char *str_toupper(char *str)
 		}
 	return (str);
 }
-char *flag_xo_help(t_param *a, int *spaces, int *zeros)
+
+char	*flag_xo_help(t_param *a, int *spaces, int *zeros)
 {
 	if (a->flag.h_flg)
 	{
@@ -34,55 +35,55 @@ char *flag_xo_help(t_param *a, int *spaces, int *zeros)
 		{
 			*spaces = *spaces - 2;
 			if (a->type == 10)
-				return("0x");
+				return ("0x");
 			else
-				return("0X");
+				return ("0X");
 		}
 		if (a->type == 6 || a->type == 7)
 		{
 			*spaces = *spaces - 1;
-			return("0");
+			return ("0");
 		}
 	}
-	return 0;
+	return (0);
 }
-char *aaaa(t_param *a, unsigned long long int d, int *res_len)
+
+char	*get_printres(t_param *a, unsigned long long int d, int *res_len)
 {
-		char *print_res;
+	char *print_res;
+
 	if (a->type == 6 || a->type == 7)
 		print_res = unsign_itoa_base(d, 8);
 	else if (a->type == 8 || a->type == 9)
 		print_res = unsign_itoa_base(d, 10);
 	else if (a->type == 10 || a->type == 11)
 		print_res = unsign_itoa_base(d, 16);
-	if(d == 0 && (a->precision == 0 || (a->flag.h_flg && a->type < 10)))
+	if (d == 0 && (a->precision == 0 || (a->flag.h_flg && a->type < 10)))
 		print_res = 0;
 	*res_len = ft_strlen(print_res);
 	return (print_res);
 }
-char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zeros)
+
+char	*type_uox_help(t_param *a, unsigned long long int d, int *spaces,
+	int *zeros)
 {
-	int res_len;
-	char *print_res;
-	char *print_x_flag;
+	int		res_len;
+	char	*print_res;
+	char	*print_x_flag;
 
 	res_len = 0;
-	print_res = aaaa(a, d, &res_len);
-
+	print_res = get_printres(a, d, &res_len);
 	*spaces = a->width - res_len;
 	if (a->precision >= res_len)
 		*zeros = a->precision - res_len;
-  if (d == 0 && a->flag.h_flg && a->precision == -1)
-    (*spaces)++;
-
+	if (d == 0 && a->flag.h_flg && a->precision == -1)
+		(*spaces)++;
 	print_x_flag = flag_xo_help(a, spaces, zeros);
-
 	if (a->flag.z_flg && a->precision == -1)
 		*zeros = *spaces;
-
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', *spaces - *zeros);
-	if (!(d == 0 && (a->type == 10 || a->type == 11))) //|| (a->type == 6 || a->type == 7))
+	if (!(d == 0 && (a->type == 10 || a->type == 11)))
 		ft_putstr(print_x_flag);
 	put_chr_n('0', *zeros);
 	if (a->type == 11)
@@ -92,36 +93,31 @@ char *type_uox_help(t_param *a, unsigned long long int d, int *spaces, int *zero
 	return (print_res);
 }
 
-int type_uox(t_param *a, va_list ap)
+int		type_uox(t_param *a, va_list ap)
 {
-	int res;
-	unsigned long long int d;
-	int spaces;
-	int zeros;
-	char *print_res;
+	int						res;
+	unsigned long long int	d;
+	int						spaces;
+	int						zeros;
+	char					*print_res;
 
 	spaces = 0;
 	zeros = 0;
 	res = 0;
 	d = get_uox(a, ap);
-	//printf("\nd=%i\n", d);
 	if (a->flag.n_flg)
 		a->flag.z_flg = 0;
 	print_res = type_uox_help(a, d, &spaces, &zeros);
-	//  printf("\n\n0.res=%i\nprint_res_len=%i\nfla_h=%i\ntype=%i\n",res, ft_strlen(print_res),a->flag.h_flg, a->type);
-
 	if (a->flag.n_flg)
 		put_chr_n(' ', spaces - zeros);
 	if (a->flag.h_flg && (d > 0 || (a->type == 6 || a->type == 7)))
-  {
-    if (a->type == 10 || a->type == 11)
-    	res += 2;
-    if (a->type == 6 || a->type == 7)
-      res += 1;
-  }
-	//  printf("1.res in type_uox:%d", res);
+	{
+		if (a->type == 10 || a->type == 11)
+			res += 2;
+		if (a->type == 6 || a->type == 7)
+			res += 1;
+	}
 	res += ft_strlen(print_res) + ft_max(spaces, zeros);
 	free(print_res);
-	//  printf("\n2.res in type_uox:%d\n", res);
 	return (res);
 }

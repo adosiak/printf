@@ -60,11 +60,11 @@ int		main(void)
  	//	printf("MY:%i\n", ft_printf("Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c",100,'a', a, 10, 20, 30, 'i'));
  //		printf("cr:%i\n", printf("Lalalala, %d%% des gens qui parlent %C Ly adorent %s. Ou Presque. %d, %u, %X, %c",100, 'a', a, 10, 20, 30, 'i'));
  //---%x------
- printf("MY:%i\n", ft_printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100,'a', a, 10, 20, 30, 'i'));
- printf("cr:%i\n", printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100, 'a', a, 10, 20, 30, 'i'));
+ //printf("MY:%i\n", ft_printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100,'a', a, 10, 20, 30, 'i'));
+// printf("cr:%i\n", printf("1 %d%% 2 %C 3 %s. Ou Presque. %d, %u, %X, %c",100, 'a', a, 10, 20, 30, 'i'));
 		//---%p------
-	/*printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
-	printf("cr:%i\n", printf("%%p:%1p\n", a1));*/
+	printf("MY:%i\n", ft_printf("%%p:%p\n", a1));
+	printf("cr:%i\n", printf("%%p:%1p\n", a1));
 
 	//---%f------
 //printf("MY:%i\n", ft_printf("%%p:%p\n", a1));

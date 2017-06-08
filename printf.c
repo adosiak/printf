@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/07 17:23:07 by adosiak           #+#    #+#             */
+/*   Updated: 2017/06/07 18:41:14 by adosiak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 #include "header.h"
 
-char g_lengths[8][3] = {"hh","h","l","ll","j","z","L","t"};
-char g_types[14][2] = {"s","S","p","d","D","i","o","O","u","U","x","X","c","C"}	;
+char g_lengths[8][3] = {"hh", "h", "l", "ll", "j", "z", "L", "t"};
+char g_types[14][2] = {"s", "S", "p", "d", "D", "i", "o", "O", "u", "U",
+	"x", "X", "c", "C"}	;
 
 int		ft_strchr0(const char *str, int pos, int c)
 {
@@ -21,7 +33,7 @@ int		ft_strchr0(const char *str, int pos, int c)
 	return (-1);
 }
 
-t_param		*create_node(void)// maybe I don't need this?
+t_param	*create_node(void)
 {
 	t_param *new;
 
@@ -43,17 +55,14 @@ t_param		*create_node(void)// maybe I don't need this?
 
 int		ft_printf(char *fmt, ...)
 {
-	va_list ap;
-	char *work_str;
-	t_param *a;
-	int	start;
-	int	len_work_str;
-	int res;
-	int i = 0;
+	va_list	ap;
+	char	*work_str;
+	t_param	*a;
+	int		start;
+	int		res;
 
 	va_start(ap, fmt);
 	//printf("\nWhole length=%zu, \"%s\"", ft_strlen(fmt), fmt);
-
 	//printf("%s\n", fmt);
 	start = ft_strchr0(fmt, 0, '%');
 	if (start == -1)
@@ -65,27 +74,21 @@ int		ft_printf(char *fmt, ...)
 	res = start;
 	while (fmt[start])
 	{
-			//printf("\nA\n");
-		//	printf("start in printf: %i\n", start);
-
 		work_str = get_work_str(&fmt[start]);
-		len_work_str = ft_strlen(work_str);
-
 		a = parse(work_str);
+		/*printf("\n------%.--------(start=%) \"%s\"\n", start, work_str);
+		  printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
+		  printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
+		  */
 
-		/*printf("\n------%i.--------(start=%i) \"%s\"\n", i, start, work_str);
-		printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
-		printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
-*/
-	free(work_str);
-	 //printf("\n1.res in printf:%d\n", res);
+		//printf("\n1.res in printf:%d\n", res);
 		res += work_var(a, ap);
+		//printf("\n2.res in printf:%d\n", res);
+		start = start + ft_strlen(work_str);//+ ft_strlen(work_str);
+		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);
+		free(work_str);
 		free(a->extra);
 		free(a);
-		//printf("\n2.res in printf:%d\n", res);
-		start = start + len_work_str;//+ ft_strlen(work_str);
-		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);
-		i++;
 	}
 	//printf("\nRES in printf:%i\n", res);
 	return (res);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_s.c                                           :+:      :+:    :+:   */
+/*   type_sc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:48:35 by adosiak           #+#    #+#             */
-/*   Updated: 2017/05/29 17:48:37 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/07 18:38:19 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int		type_s(t_param *a, va_list ap)
 {
-	char *str;
-	int spaces;
-	int res;
+	char	*str;
+	int		spaces;
+	int		res;
 
 	str = va_arg(ap, char *);
 	//printf("\nstr=%s\n", str);
@@ -31,12 +31,10 @@ int		type_s(t_param *a, va_list ap)
 	else
 		spaces = a->width - ft_strlen(str);
 	//printf("1.spaces:%d\nwidth=%i\n", spaces, a->width);
-
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	res = ft_strlen(str);
-//printf("reshere:%d\n", res);
-
+	//printf("reshere:%d\n", res);
 	if (a->precision == -1)
 		ft_putstr(str);
 	else
@@ -54,34 +52,31 @@ int		type_s(t_param *a, va_list ap)
 	return (res);
 }
 
-int type_c(t_param *a, va_list ap)
+int		type_c(t_param *a, va_list ap)
 {
-  char c;
-  int res;
-	int spaces;
+	char	c;
+	int		res;
+	int		spaces;
 
 	c = va_arg(ap, int);
-
-  res = 1;
+	res = 1;
 	spaces = 0;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
 	// if (a->flag == "+, #, 0") undefined behavior
 	if (a->width > 1)
 		spaces = a->width - 1;
-
 	if (a->flag.n_flg == 0)
 		put_chr_n(' ', spaces);
 	ft_putchar(c);
-
 	if (a->flag.n_flg)
 		put_chr_n(' ', spaces);
 	res = res + spaces;
-  return(res);
+	return (res);
 }
 
-int no_type(t_param *a)
+int		no_type(t_param *a)
 {
-  int res;
+	int res;
 	int spaces;
 	int new_start;
 	// if ( a->length == l) and argument is not *int or wchar_t, warning is generated
@@ -89,7 +84,7 @@ int no_type(t_param *a)
 	res = 0;
 	spaces = a->width - 1;
 	new_start = ft_strchr0(a->extra, 0, '%');
-//	printf("new_start=%d, old extra=%s", new_start, a->extra);
+	//	printf("new_start=%d, old extra=%s", new_start, a->extra);
 	if (new_start > 0)
 		ft_memmove(&a->extra[0], &a->extra[new_start], ft_strlen(a->extra) - new_start + 1);
 	//printf("\nnew extra=%s\n", a->extra);
@@ -102,5 +97,5 @@ int no_type(t_param *a)
 		ft_putstr(&(a->extra[1]));
 	if (spaces > 0)
 		res = spaces;
-  return(res);
+	return (res);
 }
