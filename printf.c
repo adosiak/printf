@@ -78,11 +78,11 @@ int		ft_printf(char *fmt, ...)
 		a = parse(work_str);
 
 		res += work_var(a, ap);
-		printf("\n------.--------(start=) \"%s\"\n", work_str);
+	/*	printf("\n------.--------(start=) \"%s\"\n", work_str);
 		  printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
 		  printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
 
-
+*/
 		//printf("\n1.res in printf:%d\n", res);
 
 		//printf("\n2.res in printf:%d\n", res);
