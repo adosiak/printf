@@ -33,8 +33,8 @@ printf("\n%*.*d\n",10, 6, b);
 printf("\n%0*.*d\n",10, 6, b);
 printf("\n%*.*d\n",10, 06, b);*/
 
-printf("\n%*.*x\n", 5,-10, b);
-//printf("\n%*.-10x\n", 5, b);
+printf("{%.*s}", 5, "42");
+ft_printf("{%.*s}", 5, "42");
 //ft_printf("\n%*.*x\n", 5,10, b);
 
 //---%d-----

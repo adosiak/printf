@@ -17,7 +17,6 @@ void handle_star(t_param *a, va_list ap)
 {
   int width;
   int precision;
-  //printf("1.width=%i\n", a->width);
 
   if (a->width == -2)
     {
@@ -31,13 +30,5 @@ void handle_star(t_param *a, va_list ap)
         a->width = width;
     }
   if (a->precision == -2)
-  {
     a->precision = va_arg(ap, int);
-  //  printf("pres=%i", a->precision);
-    if (a->precision < 0)
-      a->precision = a->precision * (-1);
-  //  printf("pres=%i", a->precision);
-
-  }
-
 }
