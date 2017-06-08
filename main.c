@@ -23,12 +23,19 @@ int		main(void)
 	float f = 10.0202;
 	char *aa = NULL;
 	wchar_t *d = 0;
+
 	//----%s----
 //printf("MY:%i\n", ft_printf("%s string. gg!", "this", "string"));
 //printf("cr:%i\n", printf("%s string. gg!", "this", "string"));
 //ft_printf("%S\n", L"Á±≥");
-ft_printf("\n\n\n%S\n", L"@@");
+/*printf("\n%*.*d\n",010, 6, b);
+printf("\n%*.*d\n",10, 6, b);
+printf("\n%0*.*d\n",10, 6, b);
+printf("\n%*.*d\n",10, 06, b);*/
 
+printf("\n%*.*x\n", 5,-10, b);
+//printf("\n%*.-10x\n", 5, b);
+//ft_printf("\n%*.*x\n", 5,10, b);
 
 //---%d-----
 	//printf("MY:%i\n", ft_printf("% 0    d", b));

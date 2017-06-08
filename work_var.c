@@ -18,6 +18,7 @@ int		work_var(t_param *a, va_list ap)
 	int res;
 
 	res = 0;
+	handle_star(a, ap);
 	if (a->type != -1)
 	{
 		if (a->type == 0 || a->type == 1)

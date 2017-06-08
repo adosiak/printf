@@ -76,13 +76,15 @@ int		ft_printf(char *fmt, ...)
 	{
 		work_str = get_work_str(&fmt[start]);
 		a = parse(work_str);
-		/*printf("\n------%.--------(start=%) \"%s\"\n", start, work_str);
+
+		res += work_var(a, ap);
+		printf("\n------.--------(start=) \"%s\"\n", work_str);
 		  printf("\nflag.z=%i\nflag.n=%i\nflag.p=%i\nflag.h=%i\n", a->flag.z_flg, a->flag.n_flg,a->flag.p_flg,a->flag.h_flg);
 		  printf("\nparameter=%i\nwidth=%i\nprecision=%i\nlength=%s\ntype=%s\nextra=%s\nlen of extra=%zu\nspaces=%i\n", a->parameter, a->width, a->precision, g_lengths[a->length], g_types[a->type], a->extra, ft_strlen(a->extra), a->spaces);
-		  */
+
 
 		//printf("\n1.res in printf:%d\n", res);
-		res += work_var(a, ap);
+
 		//printf("\n2.res in printf:%d\n", res);
 		start = start + ft_strlen(work_str);//+ ft_strlen(work_str);
 		//printf("All_len=%zu\nstart=%i\n",ft_strlen(fmt), start);

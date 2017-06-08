@@ -63,5 +63,6 @@ char			*unsign_itoa_base(unsigned long long int value, int base);
 unsigned long long get_uox(t_param *a, va_list ap);
 long long		get_di(t_param *a, va_list ap);
 int				ft_putfree(char *str);
+void			handle_star(t_param *a, va_list ap);
 
 #endif

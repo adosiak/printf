@@ -86,7 +86,9 @@ int			get_delta(t_param *a, int *flag, char *str, int pres_flag)
 	(delta > 0) ? a->flag.is = 1 : 0;
 	(a->parameter) ? delta += ft_getsize(a->parameter, 10) + 1 : 0;
 	(a->width >= 0) ? delta = delta + ft_getsize(a->width, 10) : 0;
+	(a->width == -2) ? delta ++ : 0;
 	(a->precision >= 0) ? delta = delta + ft_getsize(a->precision, 10) + 1 : 0;
+	(a->precision == -2) ? delta += 2 : 0;
 	(a->length >= 0) ? delta += ft_strlen(g_lengths[a->length]) : 0;
 	(a->type >= 0) ? delta++ : 0;
 	i = delta + a->spaces + 1;
@@ -143,7 +145,12 @@ t_param		*parse(char *str)
 	a->width = ft_atoi(&str[pos]);
 	//printf("!!!!!!!Here: %s", &str[get_delta(a, &flag, str, pres_flag) + 1]);
 	if (a->width == 0 && str[pos] != '0')
-		a->width = -1;
+	{
+		if (str[pos] == '*')
+			a->width = -2;
+		else
+			a->width = -1;
+	}
 	/*printf("3.Print get_delta:%i\n",get_delta(a, &flag, str, pres_flag));
 	  printf("\nAAA:%s", &str[get_delta(a, &flag, str, pres_flag) + 1]);*/
 	pos = get_delta(a, &flag, str, pres_flag) + 1;
@@ -151,8 +158,10 @@ t_param		*parse(char *str)
 	{
 		pos++;// + 1 for '.'
 		a->precision = ft_atoi(&str[pos]);
-		if (!ft_isdigit(str[pos]))
+		if (!ft_isdigit(str[pos]) && str[pos] != '*')
 			pres_flag = -1;// in case "%.s"
+		if (str[pos] == '*')
+			a->precision = -2;
 	}
 	pos = get_delta(a, &flag, str, pres_flag);
 	get_length_type(str, pos, a, 1);
