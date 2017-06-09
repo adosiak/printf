@@ -14,6 +14,7 @@
 #include "includes/header.h"
 #include <limits.h>
 
+# define RED "\x1b[31m"
 
 int		main(void)
 {
@@ -33,8 +34,10 @@ printf("\n%*.*d\n",10, 6, b);
 printf("\n%0*.*d\n",10, 6, b);
 printf("\n%*.*d\n",10, 06, b);*/
 
-printf("{%.*s}", 5, "42");
-ft_printf("{%.*s}", 5, "42");
+//printf("{%.*s}", 5, "42");
+//ft_printf("{%.*s}", 5, "42");
+printf("1.@moulitest: %s\n", NULL);
+ft_printf("2.@moulitest: %s\n", NULL);
 //ft_printf("\n%*.*x\n", 5,10, b);
 
 //---%d-----
