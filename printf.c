@@ -62,6 +62,7 @@ int		ft_printf(char *fmt, ...)
 	int		res;
 
 	va_start(ap, fmt);
+	ft_putstr("tyty");
 	start = ft_strchr0(fmt, 0, '%');
 	if (start == -1)
 		return ((ft_putfree(ft_strdup(fmt))));
@@ -77,5 +78,5 @@ int		ft_printf(char *fmt, ...)
 		free(a->extra);
 		free(a);
 	}
-	return (res + 1);
+	return (res);
 }
