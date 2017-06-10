@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 16:19:02 by adosiak           #+#    #+#             */
-/*   Updated: 2017/03/14 16:33:47 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 16:02:05 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int		ft_max(int a, int b)
 		ret = b;
 	if (ret < 0)
 		return (0);
-else
-	return (ret);
+	else
+		return (ret);
 }

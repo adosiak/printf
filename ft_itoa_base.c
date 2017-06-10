@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 09:04:48 by exam              #+#    #+#             */
-/*   Updated: 2017/03/14 15:40:48 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 16:01:11 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,14 @@ char		*ft_itoa_base(long long value, int base)
 
 	i = 0;
 	flag = 0;
-	if (value == (1LL<<(sizeof(long long) * 8 -1)))//-9223372036854775808)
+	if (value == (1LL << (sizeof(long long) * 8 - 1)))
 		return (ft_strdup("-9223372036854775808"));
 	str = (char *)malloc(sizeof(char) * ft_getsize(value, base) + 1);
-
 	if (value < 0)
 	{
 		value = value * (-1);
 		flag = 1;
 	}
-	//printf("value=%lld\n", value);
 	while (value >= (long long)base)
 	{
 		put_hex(value % base, str, i);

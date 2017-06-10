@@ -77,5 +77,5 @@ int		ft_printf(char *fmt, ...)
 		free(a->extra);
 		free(a);
 	}
-	return (res);
+	return (res + 1);
 }

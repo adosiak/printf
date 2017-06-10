@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 13:28:30 by adosiak           #+#    #+#             */
-/*   Updated: 2017/03/15 13:08:50 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 16:26:10 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct		s_file
 	char			*str;
 	int				fd;
 }					t_file;
-
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
@@ -101,7 +100,5 @@ int					ft_getsize(long long value, int base);
 int					ft_max(int a, int b);
 
 int					ft_get_next_line(const int fd, char **line);
-
-
 
 #endif

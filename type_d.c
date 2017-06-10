@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:42:14 by adosiak           #+#    #+#             */
-/*   Updated: 2017/06/07 18:45:34 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 15:55:53 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ void	type_di_help(t_param *a, long long d, int *spaces, int *zeros)
 
 	neg = 0;
 	print_res = ft_itoa_base(d, 10);
-	if (d < 0)
-		neg = 1;
+	(d < 0) ? neg = 1 : 0;
 	if (d == 0 && a->precision == 0)
 		print_res = 0;
-	if (a->flag.n_flg)
-		a->flag.z_flg = 0;
+	(a->flag.n_flg) ? a->flag.z_flg = 0 : 0;
 	*spaces = a->width - ft_strlen(print_res);
 	if (a->flag.p_flg && !neg)
 		(*spaces)--;
@@ -56,7 +54,6 @@ int		type_di(t_param *a, va_list ap)
 	zeros = 0;
 	res = 0;
 	d = get_di(a, ap);
-	//printf("in type_d:%lld\n", d);
 	str = ft_itoa_base(d, 10);
 	if (a->spaces > 0 && !a->flag.is && d >= 0 && a->width <= a->precision)
 		res = put_chr_n(' ', 1);

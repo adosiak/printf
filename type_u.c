@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:42:28 by adosiak           #+#    #+#             */
-/*   Updated: 2017/06/07 18:31:46 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 15:47:33 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*str_toupper(char *str)
 	return (str);
 }
 
-char	*flag_xo_help(t_param *a, int *spaces, int *zeros)
+char	*flag_xo_help(t_param *a, int *spaces)
 {
 	if (a->flag.h_flg)
 	{
@@ -78,7 +78,7 @@ char	*type_uox_help(t_param *a, unsigned long long int d, int *spaces,
 		*zeros = a->precision - res_len;
 	if (d == 0 && a->flag.h_flg && a->precision == -1)
 		(*spaces)++;
-	print_x_flag = flag_xo_help(a, spaces, zeros);
+	print_x_flag = flag_xo_help(a, spaces);
 	if (a->flag.z_flg && a->precision == -1)
 		*zeros = *spaces;
 	if (a->flag.n_flg == 0)

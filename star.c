@@ -6,7 +6,7 @@
 /*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 14:09:12 by adosiak           #+#    #+#             */
-/*   Updated: 2017/06/08 18:30:50 by adosiak          ###   ########.fr       */
+/*   Updated: 2017/06/09 15:44:17 by adosiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void	handle_star(t_param *a, va_list ap)
 {
 	int	width;
-	int	precision;
 
 	if (a->width == -2)
 	{

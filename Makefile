@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 CC = gcc
-FLAGS = -c -g
+FLAGS = -c -g -Wextra -Wall -Werror
 INCLUDES = includes
 SRCS = ft_strmap.c ft_strlen.c ft_strmapi.c ft_strequ.c ft_strnequ.c \
 	   ft_strcmp.c ft_strncmp.c ft_strcpy.c ft_strncpy.c ft_strsub.c \
@@ -27,8 +27,8 @@ SRCS = ft_strmap.c ft_strlen.c ft_strmapi.c ft_strequ.c ft_strnequ.c \
 		 ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 		 ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strrev.c \
 		 ft_itoa_base.c ft_power.c ft_getsize.c ft_max.c ft_get_next_line.c \
-		 parse.c work_var.c printf.c type_sc.c type_d.c type_u.c length.c \
-		 unsign_itoa_base.c type_p.c printfree.c star.c
+		 parse1.c parse2.c work_var.c printf.c type_sc.c type_d.c type_u.c \
+		 unsign_itoa_base.c type_p.c printfree.c star.c no_type.c length.c
 
 OBJS =  $(SRCS:.c=.o)
 

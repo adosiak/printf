@@ -1,8 +1,18 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unsign_itoa_base.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adosiak <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/09 15:52:55 by adosiak           #+#    #+#             */
+/*   Updated: 2017/06/09 15:53:46 by adosiak          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int		unsign_getsize(unsigned long long value, int base)
+int			unsign_getsize(unsigned long long value, int base)
 {
 	int i;
 
